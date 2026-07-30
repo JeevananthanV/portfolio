@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>JEEVANANTHAN V | Full Stack Developer</title>
+  <meta name="description" content="Luxury 3D portfolio for JEEVANANTHAN V, Full Stack Developer from Salem, Tamil Nadu.">
+  <style>
+    :root {
+      --bg: #07060c;
+      --bg2: #11111a;
+      --panel: rgba(18, 16, 24, 0.64);
+      --panel-strong: rgba(29, 26, 37, 0.88);
+      --text: #edf2ff;
+      --muted: #b9b2c5;
+      --line: rgba(223, 208, 184, 0.14);
+      --accent: #b08d57;
+      --accent2: #e2c48d;
+      --accent3: #7d6745;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(226, 196, 141, 0.16), transparent 26%),
+        radial-gradient(circle at 80% 12%, rgba(176, 141, 87, 0.14), transparent 22%),
+        radial-gradient(circle at 55% 80%, rgba(125, 103, 69, 0.12), transparent 24%),
+        linear-gradient(180deg, #050407 0%, #0a0910 52%, #040306 100%);
+      overflow-x: hidden;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 64px 64px;
+      mask-image: radial-gradient(circle at center, black 50%, transparent 92%);
+      pointer-events: none;
+      opacity: 0.35;
+    }
+    .wrap { width: min(1180px, calc(100vw - 32px)); margin: 0 auto; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(18px); background: rgba(4, 7, 18, 0.56); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+    .orb { width: 14px; height: 14px; border-radius: 50%; background: linear-gradient(135deg, var(--accent2), var(--accent)); box-shadow: 0 0 24px rgba(226,196,141,0.65); }
+    .nav a { color: var(--muted); text-decoration: none; margin-left: 22px; font-size: 0.92rem; }
+    .nav a:hover { color: var(--text); }
+    .hero { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 28px; padding: 44px 0 26px; align-items: center; min-height: calc(100vh - 80px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: rgba(255,255,255,0.04); color: var(--muted); font-size: 0.9rem; }
+    h1 { margin: 22px 0 14px; font-size: clamp(3rem, 8vw, 6.8rem); line-height: 0.92; letter-spacing: -0.06em; text-wrap: balance; }
+    .lead { max-width: 620px; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.15rem); line-height: 1.8; }
+    .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+    .btn { padding: 14px 20px; border-radius: 999px; text-decoration: none; font-weight: 600; border: 1px solid transparent; }
+    .btn.primary { background: linear-gradient(135deg, var(--accent), var(--accent2)); color: white; box-shadow: 0 14px 40px rgba(139,92,246,0.35); }
+    .btn.secondary { color: var(--text); border-color: var(--line); background: rgba(255,255,255,0.03); }
+    .hero-cards { position: relative; min-height: 560px; perspective: 1400px; }
+    .portrait {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 84%);
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      transform: translate3d(0, 0, 0) rotate(1deg);
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(0,0,0,0.2));
+      z-index: 2;
+    }
+    .portrait img { width: 100%; display: block; height: auto; }
+    .cube { position: absolute; inset: 42px 18px 40px 32px; transform-style: preserve-3d; transform: rotateX(16deg) rotateY(-26deg); }
+    .face { position: absolute; inset: 0; border-radius: 30px; border: 1px solid rgba(255,255,255,0.12); background: linear-gradient(180deg, rgba(18, 29, 65, 0.96), rgba(6, 10, 28, 0.7)); box-shadow: var(--shadow); overflow: hidden; }
+    .face::before { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 20% 20%, rgba(226,196,141,0.16), transparent 24%), radial-gradient(circle at 85% 15%, rgba(176,141,87,0.24), transparent 22%), linear-gradient(135deg, transparent 0 42%, rgba(255,255,255,0.06) 42% 43%, transparent 43% 100%); }
+    .face.main { transform: translateZ(48px); }
+    .face.glow { transform: translate3d(26px, 20px, -36px); filter: blur(2px); opacity: 0.7; }
+    .screen { position: absolute; inset: 18px; border-radius: 22px; background: linear-gradient(180deg, rgba(8, 13, 31, 0.9), rgba(6, 8, 18, 0.96)); border: 1px solid rgba(255,255,255,0.08); padding: 22px; display: flex; flex-direction: column; justify-content: space-between; }
+    .window { display: flex; gap: 8px; }
+    .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,0.2); }
+    .visual { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: end; }
+    .statcard, .project, .chipbox, .timeline, .contact { background: var(--panel); border: 1px solid var(--line); backdrop-filter: blur(18px); box-shadow: var(--shadow); }
+    .statcard { border-radius: 22px; padding: 18px; }
+    .statcard strong { display: block; font-size: 2rem; margin-bottom: 8px; }
+    .tower { position: relative; height: 320px; border-radius: 24px; background: linear-gradient(180deg, rgba(226,196,141,0.16), rgba(176,141,87,0.08)); border: 1px solid rgba(255,255,255,0.1); overflow: hidden; }
+    .tower span { position: absolute; border-radius: 18px; background: linear-gradient(180deg, rgba(255,255,255,0.75), rgba(176,141,87,0.4)); box-shadow: 0 0 28px rgba(226,196,141,0.14); }
+    .tower .a { width: 92px; height: 220px; right: 36px; bottom: 22px; transform: skewY(-10deg); }
+    .tower .b { width: 74px; height: 170px; right: 128px; bottom: 62px; transform: skewY(10deg); background: linear-gradient(180deg, rgba(226,196,141,0.72), rgba(176,141,87,0.32)); }
+    .tower .c { width: 48px; height: 130px; right: 214px; bottom: 96px; background: linear-gradient(180deg, rgba(255,255,255,0.65), rgba(176,141,87,0.22)); }
+    section { padding: 36px 0; }
+    .section-head { display: flex; justify-content: space-between; gap: 20px; align-items: end; margin-bottom: 18px; }
+    .section-head h2 { margin: 0; font-size: clamp(1.8rem, 3vw, 3rem); letter-spacing: -0.04em; }
+    .section-head p { margin: 0; max-width: 540px; color: var(--muted); line-height: 1.7; }
+    .grid { display: grid; gap: 18px; }
+    .projects { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .project { border-radius: 26px; padding: 18px; min-height: 250px; position: relative; overflow: hidden; }
+    .project::after { content: ""; position: absolute; inset: auto -20% -35% auto; width: 180px; height: 180px; border-radius: 50%; background: radial-gradient(circle, rgba(226,196,141,0.18), transparent 68%); }
+    .project h3 { margin: 14px 0 8px; font-size: 1.2rem; }
+    .project p { margin: 0; color: var(--muted); line-height: 1.65; }
+    .tag { display: inline-flex; padding: 8px 12px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.08); color: #dbe5ff; font-size: 0.82rem; }
+    .project .art { height: 120px; margin-top: 18px; border-radius: 20px; background: linear-gradient(135deg, rgba(176,141,87,0.7), rgba(226,196,141,0.22)); position: relative; overflow: hidden; }
+    .project .art::before, .project .art::after { content: ""; position: absolute; border-radius: 20px; }
+    .project .art::before { inset: 18px 22px 20px 18px; border: 1px solid rgba(255,255,255,0.2); transform: rotate(-8deg); }
+    .project .art::after { width: 74px; height: 74px; right: 16px; top: 16px; background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,0)); opacity: 0.55; }
+    .skills { grid-template-columns: 1.1fr 0.9fr; align-items: stretch; }
+    .chipbox, .timeline, .contact { border-radius: 26px; padding: 22px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 16px; }
+    .chip { padding: 10px 14px; border-radius: 999px; background: rgba(255,255,255,0.05); border: 1px solid var(--line); color: var(--text); }
+    .timeline-item { display: flex; gap: 14px; padding: 16px 0; border-top: 1px solid rgba(255,255,255,0.08); }
+    .timeline-item:first-child { border-top: 0; padding-top: 0; }
+    .year { min-width: 74px; color: var(--accent2); font-weight: 700; }
+    .timeline-item p { margin: 4px 0 0; color: var(--muted); line-height: 1.65; }
+    .contact { display: grid; grid-template-columns: 1fr auto; gap: 18px; align-items: center; background: linear-gradient(135deg, rgba(176,141,87,0.18), rgba(226,196,141,0.08)); }
+    .contact a { color: white; text-decoration: none; }
+    footer { padding: 24px 0 34px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 960px) {
+      .hero, .skills, .projects, .contact { grid-template-columns: 1fr; }
+      .nav { flex-direction: column; align-items: flex-start; gap: 10px; }
+      .nav a { margin-left: 0; margin-right: 18px; }
+      .hero { min-height: auto; padding-top: 30px; }
+      .hero-cards { min-height: 460px; }
+    }
+    @media (max-width: 640px) {
+      .wrap { width: min(100vw - 24px, 1180px); }
+      h1 { font-size: clamp(2.7rem, 15vw, 4.5rem); }
+      .section-head { flex-direction: column; align-items: flex-start; }
+      .cube { inset: 20px 0 18px 0; transform: rotateX(18deg) rotateY(-18deg); }
+      .screen { inset: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <div class="brand"><span class="orb"></span>Jeevananthan V</div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#skills">Skills</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero" id="about">
+      <div>
+        <div class="eyebrow">Full Stack Developer · Salem, Tamil Nadu, India</div>
+        <h1>Luxury digital experiences for modern brands and fast-moving products.</h1>
+        <p class="lead">Full Stack Developer with hands-on experience in React.js, JavaScript, Node.js, Salesforce Apex, and responsive UI implementation. I build polished websites that balance premium aesthetics, speed, and usability.</p>
+        <div class="cta">
+          <a class="btn primary" href="#contact">Contact me</a>
+          <a class="btn secondary" href="#work">View selected work</a>
+        </div>
+      </div>
+      <div class="hero-cards" aria-label="3D showcase">
+        <div class="portrait"><img src="profile.png" alt="Portrait of JEEVANANTHAN V"></div>
+        <div class="cube">
+          <div class="face glow"></div>
+          <div class="face main">
+            <div class="screen">
+              <div class="window"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="visual">
+                <div class="statcard">
+                  <span class="tag">Featured</span>
+                  <strong>6+</strong>
+                  <div>production websites, branding and event platforms</div>
+                </div>
+                <div class="tower" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="section-head">
+          <h2>Selected Work</h2>
+        <p>Representative work across event platforms, e-commerce, temple/community sites, and corporate branding.</p>
+      </div>
+      <div class="grid projects">
+        <article class="project">
+          <span class="tag">Product Film</span>
+          <h3>Glamours Gatherings</h3>
+          <p>Responsive model event platform with registration flows, event listings, and strong promotional hierarchy.</p>
+          <div class="art"></div>
+        </article>
+        <article class="project">
+          <span class="tag">Brand World</span>
+          <h3>Wefluence</h3>
+          <p>Influencer and brand connection frontend with profile pages, collaboration listings, and user-specific browsing.</p>
+          <div class="art" style="background:linear-gradient(135deg, rgba(244,114,182,0.72), rgba(34,211,238,0.2));"></div>
+        </article>
+        <article class="project">
+          <span class="tag">Landing Page</span>
+          <h3>Ethiroli Branding</h3>
+          <p>Corporate marketing website work focused on premium presentation, responsiveness, and UI consistency.</p>
+          <div class="art" style="background:linear-gradient(135deg, rgba(34,211,238,0.65), rgba(139,92,246,0.28));"></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-head">
+        <h2>Skills & Process</h2>
+        <p>A focused pipeline that keeps the work sharp from concept to delivery.</p>
+      </div>
+      <div class="grid skills">
+        <div class="chipbox">
+          <h3>Core strengths</h3>
+          <div class="chips">
+            <span class="chip">React.js</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip">Node.js</span>
+            <span class="chip">Salesforce Apex</span>
+            <span class="chip">Responsive Design</span>
+            <span class="chip">UI/UX</span>
+          </div>
+        </div>
+        <div class="timeline">
+          <h3>Workflow</h3>
+          <div class="timeline-item"><div class="year">01</div><div><strong>Build</strong><p>Translate business goals into responsive, user-facing interfaces.</p></div></div>
+          <div class="timeline-item"><div class="year">02</div><div><strong>Integrate</strong><p>Connect clean frontend architecture with backend or platform logic.</p></div></div>
+          <div class="timeline-item"><div class="year">03</div><div><strong>Deliver</strong><p>Ship polished production pages with consistent UX across devices.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="contact">
+        <div>
+          <h2 style="margin:0 0 8px;">Let’s build something refined.</h2>
+          <p style="margin:0;color:var(--muted);line-height:1.7;">Available for full stack development, responsive web builds, and premium digital experiences.</p>
+        </div>
+        <a class="btn primary" href="mailto:jeevananthanjeeva170902@gmail.com">jeevananthanjeeva170902@gmail.com</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">JEEVANANTHAN V · Full Stack Developer · Salem, Tamil Nadu, India</footer>
+</body>
+</html>
