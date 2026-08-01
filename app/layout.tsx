@@ -1,7 +1,8 @@
 import type React from "react"
 import type { Metadata } from "next"
 import { Syne, Inter } from "next/font/google"
-import { Analytics } from "@vercel/analytics/next"
+import { Toaster } from "sonner"
+import { ThemeProvider } from "@/components/theme-provider"
 import "./globals.css"
 
 const syne = Syne({ subsets: ["latin"], variable: "--font-syne" })
@@ -36,10 +37,12 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en">
-      <body className={`${syne.variable} ${inter.variable}`}>
-        {children}
-        <Analytics />
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${syne.variable} ${inter.variable}`} suppressHydrationWarning>
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          {children}
+          <Toaster position="bottom-right" theme="dark" richColors />
+        </ThemeProvider>
       </body>
     </html>
   )

@@ -1,41 +1,54 @@
+"use client"
+
+import { motion } from "motion/react"
+
 const techKeywords = [
-  "REACT",
+  "REACT 19",
   "NODE.JS",
-  "BOOTSTRAP",
+  "EXPRESS.JS",
   "MYSQL",
-  "JAVA",
+  "POSTGRESQL",
   "TYPESCRIPT",
   "NEXT.JS",
-  "POSTGRESQL",
-  "GIT",
-  "PAYMENT INTEGRATION",
-  "RESPONSIVE DESIGN",
-  "PDF ACCESSIBILITY",
+  "SALESFORCE APEX",
+  "REST APIS",
+  "PAYMENT GATEWAYS",
+  "TAILWIND CSS",
+  "CI/CD PIPELINES",
 ]
 
 export default function MarqueeSkills() {
   return (
-    <div className="scrolling-marquee">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+       className="scrolling-marquee"
+       style={{ position: "relative", overflow: "hidden", padding: "clamp(1.5rem, 4vw, 2rem) 0" }}
+     >
       <div className="marquee-inner">
         {techKeywords.map((kw, i) => (
-          <span
+          <motion.span
             key={i}
+            whileHover={{ scale: 1.1, color: "var(--accent)" }}
             className="huge-type outline-text"
-            style={{ fontSize: "3rem", marginRight: "60px" }}
+            style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", marginRight: "60px", cursor: "default", display: "inline-block" }}
           >
             {kw}
-          </span>
+          </motion.span>
         ))}
         {techKeywords.map((kw, i) => (
-          <span
+          <motion.span
             key={i + techKeywords.length}
+            whileHover={{ scale: 1.1, color: "var(--accent)" }}
             className="huge-type outline-text"
-            style={{ fontSize: "3rem", marginRight: "60px" }}
+            style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", marginRight: "60px", cursor: "default", display: "inline-block" }}
           >
             {kw}
-          </span>
+          </motion.span>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }
