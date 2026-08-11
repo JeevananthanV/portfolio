@@ -90,6 +90,9 @@ export default function Hero() {
                   }}
                 >
                   JEEVANANTHAN <span style={{ color: "var(--accent)" }}>V</span>
+                  <span style={{ display: "block", fontSize: "clamp(0.9rem, 2vw, 1.1rem)", fontWeight: 600, letterSpacing: "0.08em", color: "#aaa", marginTop: "8px" }}>
+                    FULL STACK DEVELOPER — SALEM, TN
+                  </span>
                 </motion.h1>
               </div>
 

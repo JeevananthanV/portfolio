@@ -1,4 +1,25 @@
 import Link from "next/link"
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Freelancing | Jeevananthan V",
+  description:
+    "Available for freelance full-stack development projects in Salem, Tamil Nadu. Specializing in React.js, Node.js, and scalable web applications.",
+  keywords: [
+    "Freelance Developer Salem",
+    "Web Developer Salem Tamil Nadu",
+    "React Freelancer India",
+    "Node.js Freelance Salem",
+    "Full Stack Freelancer Tamil Nadu",
+  ],
+  openGraph: {
+    title: "Freelancing Services | Jeevananthan V",
+    description:
+      "Available for freelance full-stack development projects in Salem, Tamil Nadu.",
+    url: "https://jeevananthan.dev/freelancing",
+    type: "website",
+  },
+}
 
 export default function FreelancingPage() {
   return (

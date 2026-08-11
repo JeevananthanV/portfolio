@@ -1,4 +1,5 @@
 import { Suspense } from "react"
+import { Metadata } from "next"
 import Preloader from "@/components/Preloader"
 import Hero from "@/components/sections/Hero"
 import About from "@/components/sections/About"
@@ -11,30 +12,35 @@ import ContactForm from "@/components/sections/ContactForm"
 import Footer from "@/components/sections/Footer"
 import FloatingDock from "@/components/ui/FloatingDock"
 
-export const dynamic = "force-dynamic"
-
-function ClientSections() {
-  return (
-    <>
-      <Preloader />
-      <Hero />
-      <About />
-      <MarqueeSkills />
-      <ExperienceTimeline />
-      <ProjectsGrid />
-      <SkillsChips />
-      <EducationCerts />
-      <ContactForm />
-      <Footer />
-      <FloatingDock />
-    </>
-  )
+export const metadata: Metadata = {
+  title: "Home",
+  description:
+    "Full Stack Developer based in Salem, Tamil Nadu — building digital products and creative experiences with React.js, Node.js, and modern web technologies.",
+  openGraph: {
+    title: "Jeevananthan V | Full Stack Developer Salem",
+    description:
+      "Full Stack Developer in Salem, Tamil Nadu — React, Node.js, MySQL, Salesforce Apex.",
+    url: "https://jeevananthan.dev",
+    type: "website",
+  },
 }
 
 export default function Home() {
   return (
     <Suspense fallback={<div style={{ padding: "40px", color: "#aaa" }}>Loading...</div>}>
-      <ClientSections />
+      <Preloader />
+      <main>
+        <Hero />
+        <About />
+        <MarqueeSkills />
+        <ExperienceTimeline />
+        <ProjectsGrid />
+        <SkillsChips />
+        <EducationCerts />
+        <ContactForm />
+        <Footer />
+      </main>
+      <FloatingDock />
     </Suspense>
   )
 }
