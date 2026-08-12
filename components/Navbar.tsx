@@ -103,7 +103,7 @@ export default function Navbar() {
             whileHover={{ scale: 1.05 }}
             style={{ fontFamily: "var(--font-syne)", fontWeight: 800, fontSize: "clamp(0.9rem, 2vw, 1.1rem)", letterSpacing: "0.05em" }}
           >
-            JEEVANANTHAN <span style={{ color: "var(--accent)" }}>V</span>
+            J <span style={{ color: "var(--accent)" }}>V</span>
           </motion.span>
         </Link>
 

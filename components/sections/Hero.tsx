@@ -5,8 +5,6 @@ import Link from "next/link"
 import { ArrowUpRight, Sparkles, Terminal, Code, Cpu, Database, Flame, Box } from "lucide-react"
 import { motion } from "motion/react"
 import Navbar from "@/components/Navbar"
-import Hero3DCanvas from "@/components/3d/Hero3DCanvas"
-import Tilt3DCard from "@/components/3d/Tilt3DCard"
 import GSAPScrollController from "@/components/animation/GSAPScrollController"
 import BackgroundVideoContainer from "@/components/ui/BackgroundVideoContainer"
 
@@ -214,30 +212,74 @@ export default function Hero() {
               </motion.div>
             </div>
 
-            {/* Right Column: 3D Interactive WebGL Stage */}
+            {/* Right Column: Technology Showcase */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="hero-canvas-wrapper"
+              className="hero-tech-showcase"
               style={{ position: "relative", minHeight: "clamp(300px, 50vw, 480px)", width: "100%" }}
             >
-              <Tilt3DCard intensity={12}>
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    minHeight: "clamp(300px, 50vw, 480px)",
-                    borderRadius: "20px",
-                    background: "radial-gradient(circle at center, rgba(255, 62, 0, 0.08) 0%, rgba(10, 10, 10, 0.85) 100%)",
-                    border: "1px solid rgba(255, 255, 255, 0.12)",
-                    boxShadow: "0 20px 50px rgba(0,0,0,0.6)",
-                    overflow: "hidden",
-                  }}
-                >
-                  <Hero3DCanvas />
+              <div
+                style={{
+                  position: "relative",
+                  width: "100%",
+                  minHeight: "clamp(300px, 50vw, 480px)",
+                  borderRadius: "20px",
+                  background: "radial-gradient(circle at center, rgba(255, 62, 0, 0.08) 0%, rgba(10, 10, 10, 0.85) 100%)",
+                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  boxShadow: "0 20px 50px rgba(0,0,0,0.6)",
+                  overflow: "hidden",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "2rem",
+                }}
+              >
+                <div style={{ textAlign: "center" }}>
+                  <motion.div
+                    initial={{ scale: 0.8, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ delay: 0.6, duration: 0.5 }}
+                  >
+                    <div
+                      style={{
+                        width: "120px",
+                        height: "120px",
+                        borderRadius: "50%",
+                        background: "linear-gradient(135deg, var(--accent), #ff8042)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        margin: "0 auto 1.5rem auto",
+                        boxShadow: "0 0 40px rgba(255, 62, 0, 0.4)",
+                      }}
+                    >
+                      <Terminal size={48} color="#0e0e0e" />
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: "1.5rem",
+                        fontWeight: 700,
+                        marginBottom: "0.5rem",
+                        color: "var(--accent)",
+                      }}
+                    >
+                      FULL STACK DEVELOPER
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "0.9rem",
+                        color: "#888",
+                        maxWidth: "280px",
+                        margin: "0 auto",
+                      }}
+                    >
+                      React.js & Node.js engineering with scalable web applications
+                    </p>
+                  </motion.div>
                 </div>
-              </Tilt3DCard>
+              </div>
             </motion.div>
 
           </div>

@@ -7,8 +7,6 @@ import { Layers, Zap, ShieldCheck } from "lucide-react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
-import Tilt3DCard from "@/components/3d/Tilt3DCard"
-
 const stats = [
   { label: "YEARS EXP", value: 1 },
   { label: "COMPANIES", value: 2 },
@@ -159,9 +157,10 @@ export default function About() {
             alignItems: "center",
           }}
         >
-          {/* Left Column: Image Box & Live Badge */}
           <div className="about-image-wrapper" style={{ textAlign: "center", position: "relative" }}>
-            <Tilt3DCard intensity={15} style={{ display: "inline-block" }}>
+            <div
+              style={{ display: "inline-block" }}
+            >
               <div
                 style={{
                   position: "relative",
@@ -236,7 +235,7 @@ export default function About() {
                   FULL STACK DEVELOPER
                 </div>
               </div>
-            </Tilt3DCard>
+            </div>
           </div>
 
           {/* Right Column: Bio & Core Engineering Pillars */}
