@@ -45,23 +45,66 @@ export default function GSAPScrollController() {
       }
     })
 
-    // GSAP parallax effects on headings & sections
+    // GSAP Split-word reveal animation on h2 headings
     const headings = document.querySelectorAll("h2")
     headings.forEach((heading) => {
-      gsap.fromTo(
-        heading,
-        { opacity: 0.3, y: 20 },
+      const text = heading.innerText
+      if (!text) return
+      
+      const words = text.split(" ")
+      heading.innerHTML = words.map(w => `
+        <span style="display: inline-block; overflow: hidden; margin-right: 0.25em;">
+          <span class="animate-word" style="display: inline-block; transform: translate3d(0, 100%, 0);">
+            ${w}
+          </span>
+        </span>
+      `).join("")
+      
+      const animateWords = heading.querySelectorAll(".animate-word")
+      gsap.to(
+        animateWords,
         {
-          opacity: 1,
-          y: 0,
+          transform: "translate3d(0, 0%, 0)",
+          duration: 0.8,
+          stagger: 0.08,
+          ease: "power4.out",
           scrollTrigger: {
             trigger: heading,
-            start: "top 85%",
-            end: "top 50%",
-            scrub: 0.5,
-          },
+            start: "top 88%",
+            toggleActions: "play none none none"
+          }
         }
       )
+    })
+
+    // Staggered reveal for cards across sections with 3D rotation reveals
+    const staggerTriggers = [
+      { selector: ".about-pillar-card", trigger: ".about-pillars-container" },
+      { selector: ".about-stat-card", trigger: ".about-stats-container" },
+      { selector: ".project-card", trigger: "#work" }
+    ]
+
+    staggerTriggers.forEach(({ selector, trigger }) => {
+      const elements = document.querySelectorAll(selector)
+      if (elements.length > 0) {
+        gsap.fromTo(
+          elements,
+          { opacity: 0, y: 50, rotateX: -15 },
+          {
+            opacity: 1,
+            y: 0,
+            rotateX: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: trigger,
+              start: "top 88%",
+              toggleActions: "play none none none"
+            }
+          }
+        )
+      }
     })
 
     return () => {

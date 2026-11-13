@@ -3,6 +3,7 @@ import type { Metadata } from "next"
 import { Syne, Inter } from "next/font/google"
 import { Toaster } from "sonner"
 import { ThemeProvider } from "@/components/theme-provider"
+import ThreeWebGLBackground from "@/components/animation/ThreeWebGLBackground"
 import "./globals.css"
 
 const syne = Syne({ subsets: ["latin"], variable: "--font-syne" })
@@ -143,9 +144,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <JsonLd />
+      <head>
+        <JsonLd />
+      </head>
       <body className={`${syne.variable} ${inter.variable}`} suppressHydrationWarning>
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
+          <ThreeWebGLBackground />
           {children}
           <Toaster position="bottom-right" theme="dark" richColors />
         </ThemeProvider>

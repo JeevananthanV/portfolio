@@ -36,6 +36,25 @@ export default function About() {
   const [activePillar, setActivePillar] = useState(0)
   const sectionRef = useRef<HTMLDivElement>(null)
 
+  const handle3DTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget
+    const rect = card.getBoundingClientRect()
+    const x = e.clientX - rect.left
+    const y = e.clientY - rect.top
+    const rx = ((y / rect.height) - 0.5) * -12
+    const ry = ((x / rect.width) - 0.5) * 12
+    card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02, 1.02, 1.02)`
+    card.style.transition = "transform 0.1s ease, box-shadow 0.2s ease"
+    card.style.boxShadow = `0 15px 35px rgba(255, 62, 0, 0.15)`
+  }
+
+  const handle3DReset = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget
+    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
+    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease"
+    card.style.boxShadow = `none`
+  }
+
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger)
 
@@ -162,6 +181,8 @@ export default function About() {
               style={{ display: "inline-block" }}
             >
               <div
+                onMouseMove={handle3DTilt}
+                onMouseLeave={handle3DReset}
                 style={{
                   position: "relative",
                   borderRadius: "24px",
@@ -172,14 +193,13 @@ export default function About() {
               >
                 <div style={{ borderRadius: "18px", overflow: "hidden", position: "relative", width: "clamp(240px, 70vw, 300px)", height: "clamp(280px, 80vw, 360px)" }}>
                   <img
-                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=800&auto=format&fit=crop"
+                    src="/jeevan.jpg"
                     alt="JEEVANANTHAN V - Full Stack Software Engineer"
-                    referrerPolicy="no-referrer"
                     style={{
                       width: "100%",
                       height: "100%",
                       objectFit: "cover",
-                      objectPosition: "top center",
+                      objectPosition: "center 20%",
                       filter: "contrast(1.05) brightness(0.98)",
                       display: "block",
                     }}
@@ -267,7 +287,8 @@ export default function About() {
                       key={pillar.title}
                       className="about-pillar-card"
                       onClick={() => setActivePillar(idx)}
-                      whileHover={{ scale: 1.02 }}
+                      onMouseMove={handle3DTilt}
+                      onMouseLeave={handle3DReset}
                       whileTap={{ scale: 0.98 }}
                       style={{
                         padding: "16px",
@@ -303,7 +324,8 @@ export default function About() {
                 <motion.div
                   key={stat.label}
                   className="about-stat-card"
-                  whileHover={{ y: -3, borderColor: "var(--accent)" }}
+                  onMouseMove={handle3DTilt}
+                  onMouseLeave={handle3DReset}
                   style={{
                     padding: "16px",
                     background: "rgba(255,255,255,0.03)",

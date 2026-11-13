@@ -13,6 +13,25 @@ const categoryTabs = [
   { id: "enterprise", label: "Healthcare & Corporate" },
 ]
 
+const handle3DTilt = (e: React.MouseEvent<HTMLDivElement>) => {
+  const card = e.currentTarget
+  const rect = card.getBoundingClientRect()
+  const x = e.clientX - rect.left
+  const y = e.clientY - rect.top
+  const rx = ((y / rect.height) - 0.5) * -12
+  const ry = ((x / rect.width) - 0.5) * 12
+  card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02, 1.02, 1.02)`
+  card.style.transition = "transform 0.1s ease, box-shadow 0.2s ease"
+  card.style.boxShadow = `0 15px 35px rgba(255, 62, 0, 0.15)`
+}
+
+const handle3DReset = (e: React.MouseEvent<HTMLDivElement>) => {
+  const card = e.currentTarget
+  card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
+  card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease"
+  card.style.boxShadow = `none`
+}
+
 /* -------------------------------------------------------------------------- */
 /* Component 1: Dedicated Flagship Spotlight for Kottai Varahi Temple        */
 /* -------------------------------------------------------------------------- */
@@ -24,6 +43,8 @@ function KottaiVarahiSpotlightCard({ project }: { project: Project }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.5 }}
+      onMouseMove={handle3DTilt}
+      onMouseLeave={handle3DReset}
       className="project-spotlight-card"
       style={{
         gridColumn: "1 / -1",
@@ -223,6 +244,193 @@ function KottaiVarahiSpotlightCard({ project }: { project: Project }) {
 }
 
 /* -------------------------------------------------------------------------- */
+/* Component 1B: Dedicated Flagship Spotlight for Nandhini Tex Saree Boutique*/
+/* -------------------------------------------------------------------------- */
+function NandhiniTexSpotlightCard({ project }: { project: Project }) {
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, scale: 0.95 }}
+      transition={{ duration: 0.5 }}
+      onMouseMove={handle3DTilt}
+      onMouseLeave={handle3DReset}
+      className="project-spotlight-card"
+      style={{
+        gridColumn: "1 / -1",
+        background: "linear-gradient(135deg, rgba(7, 26, 51, 0.45) 0%, rgba(11, 31, 58, 0.96) 100%)",
+        border: "1px solid rgba(201, 162, 39, 0.35)",
+        borderRadius: "24px",
+        overflow: "hidden",
+        boxShadow: "0 20px 50px rgba(0,0,0,0.6), inset 0 1px 0 rgba(201,162,39,0.2)",
+        position: "relative",
+        marginBottom: "24px",
+      }}
+    >
+      <div
+        className="spotlight-grid"
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))",
+          alignItems: "center",
+          gap: "32px",
+          padding: "clamp(1.5rem, 4vw, 2.5rem)",
+        }}
+      >
+        {/* Left Info Column */}
+        <div>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "16px" }}>
+            <span
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "6px",
+                padding: "clamp(0.35rem, 1vw, 0.5rem) clamp(0.75rem, 2vw, 0.875rem)",
+                background: "rgba(201, 162, 39, 0.15)",
+                border: "1px solid rgba(201, 162, 39, 0.4)",
+                color: "#C9A227",
+                fontSize: "clamp(0.65rem, 1.8vw, 0.75rem)",
+                fontWeight: 800,
+                letterSpacing: "0.15em",
+                textTransform: "uppercase",
+                borderRadius: "999px",
+              }}
+            >
+              <Sparkles size={14} /> PREMIUM SAREE E-COMMERCE
+            </span>
+            <span style={{ fontSize: "0.8rem", color: "#aaa" }}>• Nandhini Tex</span>
+          </div>
+
+          <h3
+            style={{
+              fontFamily: "var(--font-syne)",
+              fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)",
+              fontWeight: 800,
+              color: "#fff",
+              lineHeight: 1.15,
+              marginBottom: "16px",
+            }}
+          >
+            {project.title}
+          </h3>
+
+          <p style={{ fontSize: "clamp(0.85rem, 2vw, 0.98rem)", color: "#ccc", lineHeight: 1.6, marginBottom: "24px" }}>
+            {project.description}
+          </p>
+
+          {/* Quick Stats Grid */}
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
+              gap: "12px",
+              marginBottom: "28px",
+            }}
+          >
+            <div style={{ background: "rgba(0,0,0,0.4)", padding: "12px 16px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#C9A227", fontSize: "0.75rem", fontWeight: 700 }}>
+                <Database size={14} /> MySQL Schema
+              </div>
+              <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", marginTop: "4px" }}>13 Tables</div>
+            </div>
+
+            <div style={{ background: "rgba(0,0,0,0.4)", padding: "12px 16px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#C9A227", fontSize: "0.75rem", fontWeight: 700 }}>
+                <CreditCard size={14} /> Constraints
+              </div>
+              <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", marginTop: "4px" }}>₹400–₹1,220</div>
+            </div>
+
+            <div style={{ background: "rgba(0,0,0,0.4)", padding: "12px 16px", borderRadius: "10px", border: "1px solid rgba(255,255,255,0.08)" }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "6px", color: "#C9A227", fontSize: "0.75rem", fontWeight: 700 }}>
+                <Server size={14} /> Integration
+              </div>
+              <div style={{ fontSize: "1.1rem", fontWeight: 800, color: "#fff", marginTop: "4px" }}>Razorpay+COD</div>
+            </div>
+          </div>
+
+          {/* Action CTAs */}
+          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}>
+            <motion.div whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.98 }}>
+              <Link
+                href={`/projects/${project.slug}`}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "8px",
+                  padding: "clamp(0.5rem, 1.5vw, 0.75rem) clamp(1.25rem, 3vw, 1.5rem)",
+                  background: "#C9A227",
+                  color: "#071A33",
+                  fontWeight: 800,
+                  fontSize: "clamp(0.75rem, 2vw, 0.9rem)",
+                  borderRadius: "8px",
+                  textDecoration: "none",
+                }}
+              >
+                Explore Full Case Study <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Right Image/Mockup Showcase */}
+        <div style={{ position: "relative" }}>
+          <motion.div
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.3 }}
+            style={{
+              borderRadius: "16px",
+              overflow: "hidden",
+              border: "1px solid rgba(201, 162, 39, 0.3)",
+              boxShadow: "0 15px 35px rgba(0,0,0,0.8)",
+              aspectRatio: "16/10",
+              background: "#000",
+              position: "relative",
+              marginBottom: "clamp(1rem, 3vw, 1.5rem)",
+            }}
+          >
+            <img
+              src={project.heroImage}
+              alt={project.title}
+              referrerPolicy="no-referrer"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </motion.div>
+
+          {/* Floating Tech Tag Overlay */}
+          <div
+            style={{
+              position: "absolute",
+              bottom: "-16px",
+              right: "20px",
+              background: "rgba(7, 26, 51, 0.92)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid rgba(201,162,39,0.5)",
+              padding: "clamp(0.5rem, 1.5vw, 0.625rem) clamp(0.875rem, 2vw, 1.125rem)",
+              borderRadius: "12px",
+              display: "flex",
+              alignItems: "center",
+              gap: "10px",
+            }}
+          >
+            <Server size={18} color="#C9A227" />
+            <div>
+              <div style={{ fontSize: "0.75rem", fontWeight: 800, color: "#fff" }}>React + Node.js + MySQL</div>
+              <div style={{ fontSize: "0.68rem", color: "#888" }}>Tailwind CSS Production Build</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
+/* -------------------------------------------------------------------------- */
 /* Component 2: Featured Horizontal Split Showcase Card                      */
 /* -------------------------------------------------------------------------- */
 function FeaturedSplitCard({ project }: { project: Project }) {
@@ -233,7 +441,8 @@ function FeaturedSplitCard({ project }: { project: Project }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.5 }}
-      whileHover={{ y: -4, borderColor: "rgba(255, 62, 0, 0.4)" }}
+      onMouseMove={handle3DTilt}
+      onMouseLeave={handle3DReset}
       className="project-card project-card-split"
       style={{
         gridColumn: "1 / -1",
@@ -367,8 +576,6 @@ function FeaturedSplitCard({ project }: { project: Project }) {
   )
 }
 
-import Tilt3DCard from "@/components/3d/Tilt3DCard"
-
 /* -------------------------------------------------------------------------- */
 /* Component 3: Bento Box Grid Card Component                                 */
 /* -------------------------------------------------------------------------- */
@@ -381,20 +588,21 @@ function BentoGridCard({ project }: { project: Project }) {
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.4 }}
     >
-      <Tilt3DCard intensity={10}>
-         <div
-           className="project-card"
-           style={{
-             background: "rgba(255, 255, 255, 0.02)",
-             border: "1px solid rgba(255, 255, 255, 0.08)",
-             borderRadius: "16px",
-             overflow: "hidden",
-             display: "flex",
-             flexDirection: "column",
-             height: "100%",
-             transition: "border-color 0.3s ease, box-shadow 0.3s ease",
-           }}
-         >
+          <div
+            className="project-card"
+            onMouseMove={handle3DTilt}
+            onMouseLeave={handle3DReset}
+            style={{
+              background: "rgba(255, 255, 255, 0.02)",
+              border: "1px solid rgba(255, 255, 255, 0.08)",
+              borderRadius: "16px",
+              overflow: "hidden",
+              display: "flex",
+              flexDirection: "column",
+              height: "100%",
+              transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+            }}
+          >
            <Link href={`/projects/${project.slug}`} style={{ textDecoration: "none", color: "inherit", display: "flex", flexDirection: "column", height: "100%" }}>
              {/* Top Accent Color Bar */}
              <div style={{ height: "4px", background: project.colors.accent }} />
@@ -444,7 +652,6 @@ function BentoGridCard({ project }: { project: Project }) {
             </div>
           </Link>
         </div>
-      </Tilt3DCard>
     </motion.div>
   )
 }
@@ -461,7 +668,6 @@ function MinimalCodeCard({ project }: { project: Project }) {
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.4 }}
     >
-      <Tilt3DCard intensity={8}>
         <div
           className="project-card"
           style={{
@@ -542,7 +748,7 @@ function MinimalCodeCard({ project }: { project: Project }) {
             <ArrowRight size={16} color="var(--accent)" />
           </Link>
         </div>
-      </Tilt3DCard>
+
     </motion.div>
   )
 }
@@ -630,6 +836,9 @@ export default function ProjectsGrid() {
             {filteredProjects.map((project) => {
               if (project.slug === "kottai-varahi") {
                 return <KottaiVarahiSpotlightCard key={project.slug} project={project} />
+              }
+              if (project.slug === "nandhini-tex") {
+                return <NandhiniTexSpotlightCard key={project.slug} project={project} />
               }
               if (project.slug === "arise20-foundation") {
                 return <FeaturedSplitCard key={project.slug} project={project} />

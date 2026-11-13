@@ -5,9 +5,8 @@ import Hero from "@/components/sections/Hero"
 import About from "@/components/sections/About"
 import MarqueeSkills from "@/components/sections/MarqueeSkills"
 import ExperienceTimeline from "@/components/sections/ExperienceTimeline"
-import ProjectsGrid from "@/components/sections/ProjectsGrid"
-import SkillsChips from "@/components/sections/SkillsChips"
 import EducationCerts from "@/components/sections/EducationCerts"
+import ProjectsShowcase from "@/components/sections/ProjectsShowcase"
 import ContactForm from "@/components/sections/ContactForm"
 import Footer from "@/components/sections/Footer"
 import FloatingDock from "@/components/ui/FloatingDock"
@@ -32,10 +31,9 @@ export default function Home() {
       <main>
         <Hero />
         <About />
-        <MarqueeSkills />
         <ExperienceTimeline />
-        <ProjectsGrid />
-        <SkillsChips />
+        <ProjectsShowcase />
+        <MarqueeSkills />
         <EducationCerts />
         <ContactForm />
         <Footer />
