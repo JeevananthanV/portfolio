@@ -31,6 +31,8 @@ export type Project = {
   stats?: Array<{ value: string; suffix: string; label: string }>
   liveDemo?: string
   github?: string
+  railwayUrl?: string
+  netlifyUrl?: string
 }
 
 export const projects: Project[] = [
@@ -100,8 +102,9 @@ export const projects: Project[] = [
       { value: "100", suffix: "%", label: "Saree Exclusivity" },
       { value: "13", suffix: "", label: "MySQL Tables" },
     ],
-    liveDemo: "https://nandhini-tex.vercel.app",
-    github: "https://github.com/example/nandhini-tex",
+    liveDemo: "https://nandhini-tex.netlify.app",
+    netlifyUrl: "https://nandhini-tex.netlify.app",
+    github: "https://github.com/JeevananthanV/nandhini_tex",
   },
   {
     slug: "wefluence",
@@ -170,7 +173,7 @@ export const projects: Project[] = [
       { value: "90", suffix: "%", label: "Match Accuracy" },
     ],
     liveDemo: "https://wefluence.vercel.app",
-    github: "https://github.com/example/wefluence",
+    github: "https://github.com/JeevananthanV/portfolio",
   },
   {
     slug: "kottai-varahi",
@@ -255,7 +258,8 @@ export const projects: Project[] = [
       { value: "99.9", suffix: "%", label: "Uptime on cPanel" },
     ],
     liveDemo: "https://www.jaivarahi.org/",
-    github: "https://github.com/example/kottai-varahi",
+    netlifyUrl: "https://jaivarahi1.netlify.app",
+    github: "https://github.com/JeevananthanV/jaivarahi",
   },
   {
     slug: "ethiroli",
@@ -324,14 +328,15 @@ export const projects: Project[] = [
       { value: "4", suffix: "x", label: "Lead Increase" },
       { value: "98", suffix: "", label: "Lighthouse Score" },
     ],
-    liveDemo: "https://ethiroli.vercel.app",
-    github: "https://github.com/example/ethiroli",
+    liveDemo: "https://ethiroli.netlify.app",
+    netlifyUrl: "https://ethiroli.netlify.app",
+    github: "https://github.com/JeevananthanV/Ethiroli_pvt",
   },
   {
     slug: "jayalakshmi-groups",
-    title: "Jayalakshmi Groups",
-    description: "Corporate website for Jayalakshmi Groups, a multi-industry conglomerate operating across South India.",
-    role: "Web Developer",
+    title: "Glamers Gathering & Jayalakshmi Group",
+    description: "Complete full-stack event and wedding planning ecosystem featuring client portals, custom RSVP registries, multi-service quotes, automated email alerts, and synchronized admin consoles.",
+    role: "Full Stack Engineer",
     bullets: [
       "Developed a multi-location corporate website with branch directory",
       "Built an investor relations section with financial reports and filings",
@@ -392,8 +397,10 @@ export const projects: Project[] = [
       { value: "200", suffix: "+", label: "Pages" },
       { value: "99", suffix: "%", label: "Uptime" },
     ],
-    liveDemo: "https://jayalakshmi-groups.vercel.app",
-    github: "https://github.com/example/jayalakshmi-groups",
+    liveDemo: "https://glamersgathering.netlify.app",
+    netlifyUrl: "https://glamersgathering.netlify.app",
+    railwayUrl: "https://glamersgatheringreact-production.up.railway.app",
+    github: "https://github.com/JeevananthanV/glamers_gathering_react",
   },
   {
     slug: "anbu-travels",
@@ -461,13 +468,13 @@ export const projects: Project[] = [
       { value: "98", suffix: ".5%", label: "Uptime" },
     ],
     liveDemo: "https://anbu-travels.vercel.app",
-    github: "https://github.com/example/anbu-travels",
+    github: "https://github.com/JeevananthanV/portfolio",
   },
   {
     slug: "aruvi-tours",
-    title: "Aruvi Tours",
-    description: "An eco-tourism platform promoting sustainable travel experiences in South India's natural habitats.",
-    role: "Web Developer",
+    title: "Aruvi Tours & Operations Management",
+    description: "Full-stack travel booking & operations ecosystem featuring customer trip reservations, dynamic package builders, relational tour inventory, operator dashboard, and multi-tier pricing.",
+    role: "Full Stack Lead Developer",
     bullets: [
       "Designed and developed a content-rich website with tour catalog and booking",
       "Implemented an interactive map integration for route visualization",
@@ -528,8 +535,9 @@ export const projects: Project[] = [
       { value: "45", suffix: "", label: "Certified Tours" },
       { value: "12", suffix: "k", label: "Trees Planted" },
     ],
-    liveDemo: "https://aruvi-tours.vercel.app",
-    github: "https://github.com/example/aruvi-tours",
+    liveDemo: "https://aruvitours.netlify.app",
+    netlifyUrl: "https://aruvitours.netlify.app",
+    github: "https://github.com/JeevananthanV/aruvitours",
   },
   {
     slug: "arise20-foundation",
@@ -599,11 +607,11 @@ export const projects: Project[] = [
       { value: "50", suffix: "+", label: "Events Managed" },
     ],
     liveDemo: "https://arise20foundation.org",
-    github: "https://github.com/example/arise20-foundation",
+    github: "https://github.com/JeevananthanV/portfolio",
   },
   {
     slug: "salem-marathon",
-    title: "Salem Marathon & Event Platform",
+    title: "Infinity Marathon 2027 (Salem Marathon)",
     description: "Comprehensive marathon registration and event management platform designed for city-wide running events in Salem. Features bib generation, timing chip tracking, live runner leaderboards, charity fundraising, and venue logistics.",
     role: "Lead Full-Stack Architect",
     bullets: [
@@ -668,7 +676,8 @@ export const projects: Project[] = [
       { value: "100", suffix: "%", label: "Live RFID Accuracy" },
       { value: "₹5", suffix: "L+", label: "Charity Raised" },
     ],
-    liveDemo: "https://salemmarathon.org",
-    github: "https://github.com/example/salem-marathon",
+    liveDemo: "https://infinity-marathon.netlify.app",
+    netlifyUrl: "https://infinity-marathon.netlify.app",
+    github: "https://github.com/JeevananthanV/marathon_final",
   },
 ]

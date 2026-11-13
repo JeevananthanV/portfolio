@@ -11,7 +11,8 @@ import {
   QrCode, 
   CreditCard, 
   Sparkles, 
-  Server
+  Server,
+  Github
 } from "lucide-react"
 
 const categoryTabs = [
@@ -170,7 +171,7 @@ export default function ProjectsShowcase() {
                         </div>
 
                         {/* Actions */}
-                        <div className="flex items-center gap-4 flex-wrap">
+                        <div className="flex items-center gap-3 flex-wrap">
                           <Link
                             href={`/projects/${project.slug}`}
                             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-black font-semibold text-xs transition-all duration-300 hover:bg-neutral-200"
@@ -185,6 +186,26 @@ export default function ProjectsShowcase() {
                               className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-neutral-900 border border-white/10 text-white font-semibold text-xs transition-all duration-300 hover:bg-neutral-800"
                             >
                               Live App <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                          {project.railwayUrl && (
+                            <a
+                              href={project.railwayUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-purple-950/60 border border-purple-500/30 text-purple-300 font-semibold text-xs transition-all duration-300 hover:bg-purple-900/80 hover:text-white"
+                            >
+                              <Server className="w-3.5 h-3.5 text-purple-400" /> Railway API <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-xl bg-neutral-900/80 border border-white/10 text-neutral-300 font-semibold text-xs transition-all duration-300 hover:bg-neutral-800 hover:text-white"
+                            >
+                              <Github className="w-3.5 h-3.5" /> GitHub <ExternalLink className="w-3 h-3" />
                             </a>
                           )}
                         </div>
@@ -204,7 +225,7 @@ export default function ProjectsShowcase() {
                         <div className="absolute bottom-4 right-4 bg-neutral-950/90 backdrop-blur-md px-3.5 py-2 rounded-xl border border-white/10 flex items-center gap-2">
                           <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                           <div className="text-[10px] font-mono text-neutral-400">
-                            Deployed: <span className="text-white font-bold">{project.slug === "kottai-varahi" ? "cPanel Passenger" : "Vercel + VPS"}</span>
+                            Deployed: <span className="text-white font-bold">{project.railwayUrl ? "Netlify + Railway" : (project.netlifyUrl ? "Netlify Production" : "Live Production")}</span>
                           </div>
                         </div>
                       </div>
@@ -253,23 +274,59 @@ export default function ProjectsShowcase() {
                       </div>
 
                       {/* Bottom action block */}
-                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                      <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5 flex-wrap gap-2">
                         <Link
                           href={`/projects/${project.slug}`}
                           className="inline-flex items-center gap-1 text-xs font-semibold text-white hover:text-[#ff3e00] transition-colors font-sans"
                         >
                           Case Study <ArrowRight className="w-3.5 h-3.5" />
                         </Link>
-                        {project.liveDemo && (
-                          <a
-                            href={project.liveDemo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-neutral-400 hover:text-white transition-colors"
-                          >
-                            <ExternalLink className="w-4 h-4" />
-                          </a>
-                        )}
+                        <div className="flex items-center gap-2">
+                          {project.railwayUrl && (
+                            <a
+                              href={project.railwayUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Railway Backend API"
+                              className="px-2 py-0.5 rounded bg-purple-950/60 border border-purple-500/30 text-purple-300 text-[10px] font-mono hover:text-white transition-colors"
+                            >
+                              Railway
+                            </a>
+                          )}
+                          {project.netlifyUrl && (
+                            <a
+                              href={project.netlifyUrl}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Netlify Frontend"
+                              className="px-2 py-0.5 rounded bg-teal-950/60 border border-teal-500/30 text-teal-300 text-[10px] font-mono hover:text-white transition-colors"
+                            >
+                              Netlify
+                            </a>
+                          )}
+                          {project.github && (
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="GitHub Source Code"
+                              className="text-neutral-400 hover:text-white transition-colors p-1"
+                            >
+                              <Github className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                          {project.liveDemo && (
+                            <a
+                              href={project.liveDemo}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              title="Live App"
+                              className="text-neutral-400 hover:text-white transition-colors p-1"
+                            >
+                              <ExternalLink className="w-3.5 h-3.5" />
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   )}
