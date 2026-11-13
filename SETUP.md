@@ -81,3 +81,4 @@ npm run start
 
 - **WebGL Canvas Shader Errors**: Ensure your browser supports WebGL2 and hardware acceleration is turned on.
 - **Port 3000 in use**: Run with `npx next dev -p 3001` to use an alternate port.
+
