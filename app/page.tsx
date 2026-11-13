@@ -3,22 +3,23 @@ import { Metadata } from "next"
 import Preloader from "@/components/Preloader"
 import Hero from "@/components/sections/Hero"
 import About from "@/components/sections/About"
-import MarqueeSkills from "@/components/sections/MarqueeSkills"
 import ExperienceTimeline from "@/components/sections/ExperienceTimeline"
-import EducationCerts from "@/components/sections/EducationCerts"
 import ProjectsShowcase from "@/components/sections/ProjectsShowcase"
+import SkillsChips from "@/components/sections/SkillsChips"
+import MarqueeSkills from "@/components/sections/MarqueeSkills"
+import EducationCerts from "@/components/sections/EducationCerts"
 import ContactForm from "@/components/sections/ContactForm"
 import Footer from "@/components/sections/Footer"
 import FloatingDock from "@/components/ui/FloatingDock"
 
 export const metadata: Metadata = {
-  title: "Home",
+  title: "Jeevananthan V | Full Stack Developer Salem, Tamil Nadu",
   description:
-    "Full Stack Developer based in Salem, Tamil Nadu — building digital products and creative experiences with React.js, Node.js, and modern web technologies.",
+    "Full Stack Developer based in Salem, Tamil Nadu — building scalable digital systems and creative web applications with React 19, Node.js, MySQL, and Salesforce Apex.",
   openGraph: {
     title: "Jeevananthan V | Full Stack Developer Salem",
     description:
-      "Full Stack Developer in Salem, Tamil Nadu — React, Node.js, MySQL, Salesforce Apex.",
+      "Full Stack Developer in Salem, Tamil Nadu — React 19, Node.js, Express, MySQL, Salesforce Apex.",
     url: "https://jeevananthan.dev",
     type: "website",
   },
@@ -26,13 +27,14 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div style={{ padding: "40px", color: "#aaa" }}>Loading...</div>}>
+    <Suspense fallback={<div className="p-10 text-neutral-400">Loading...</div>}>
       <Preloader />
-      <main>
+      <main className="relative z-10">
         <Hero />
         <About />
         <ExperienceTimeline />
         <ProjectsShowcase />
+        <SkillsChips />
         <MarqueeSkills />
         <EducationCerts />
         <ContactForm />

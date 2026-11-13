@@ -5,50 +5,32 @@ import { motion } from "motion/react"
 const techKeywords = [
   "REACT 19",
   "NODE.JS",
-  "EXPRESS.JS",
-  "MYSQL",
+  "EXPRESS REST APIS",
+  "MYSQL SCHEMA",
   "POSTGRESQL",
   "TYPESCRIPT",
   "NEXT.JS",
   "SALESFORCE APEX",
-  "REST APIS",
-  "PAYMENT GATEWAYS",
+  "RAZORPAY INTEGRATION",
+  "JWT SECURITY",
   "TAILWIND CSS",
   "CI/CD PIPELINES",
 ]
 
 export default function MarqueeSkills() {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-       className="scrolling-marquee"
-       style={{ position: "relative", overflow: "hidden", padding: "clamp(1.5rem, 4vw, 2rem) 0" }}
-     >
-      <div className="marquee-inner">
-        {techKeywords.map((kw, i) => (
-          <motion.span
+    <div className="relative overflow-hidden py-6 border-y border-white/5 bg-neutral-950/80">
+      <div className="marquee-inner flex items-center">
+        {/* Double array for seamless loop */}
+        {[...techKeywords, ...techKeywords].map((kw, i) => (
+          <span
             key={i}
-            whileHover={{ scale: 1.1, color: "var(--accent)" }}
-            className="huge-type outline-text"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", marginRight: "60px", cursor: "default", display: "inline-block" }}
+            className="huge-type outline-text text-2xl sm:text-4xl font-extrabold mr-12 sm:mr-16 tracking-wider cursor-default select-none hover:text-[#ff3e00] hover:!-webkit-text-stroke-0 transition-colors duration-200"
           >
             {kw}
-          </motion.span>
-        ))}
-        {techKeywords.map((kw, i) => (
-          <motion.span
-            key={i + techKeywords.length}
-            whileHover={{ scale: 1.1, color: "var(--accent)" }}
-            className="huge-type outline-text"
-            style={{ fontSize: "clamp(1.8rem, 4vw, 2.8rem)", marginRight: "60px", cursor: "default", display: "inline-block" }}
-          >
-            {kw}
-          </motion.span>
+          </span>
         ))}
       </div>
-    </motion.div>
+    </div>
   )
 }

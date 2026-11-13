@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { toast } from "sonner"
-import { Send, Phone, Mail, MapPin, CheckCircle2 } from "lucide-react"
+import { Send, Phone, Mail, MapPin, CheckCircle2, MessageSquare, Clock, ArrowRight } from "lucide-react"
 import { motion } from "motion/react"
 
 export default function ContactForm() {
@@ -19,323 +19,231 @@ export default function ContactForm() {
     e.preventDefault()
 
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      toast.error("Please fill out all required fields.")
+      toast.error("Please fill in all required fields.")
       return
     }
 
     setIsSubmitting(true)
 
-    // Simulate direct contact dispatch
+    // Simulate sending dispatch
     setTimeout(() => {
       setIsSubmitting(false)
       setIsSubmitted(true)
-      toast.success("Message sent successfully! Jeevananthan will respond shortly.")
+      toast.success("Message dispatched successfully! Jeevananthan will respond shortly.")
       setFormData({ name: "", email: "", subject: "Full-Stack Project", message: "" })
     }, 1200)
   }
 
   return (
-    <section id="contact" style={{ padding: "clamp(4rem, 8vw, 7.5rem) 0", background: "#0e0e0e", borderTop: "1px solid rgba(255,255,255,0.06)", position: "relative", overflow: "hidden" }}>
-      {/* Ambient Cyber Background Image Overlay */}
-      <img
-        src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1600&auto=format&fit=crop"
-        alt="Cyber background"
-        referrerPolicy="no-referrer"
-        style={{
-          position: "absolute",
-          inset: 0,
-          width: "100%",
-          height: "100%",
-          objectFit: "cover",
-          opacity: 0.12,
-          filter: "grayscale(1) contrast(1.2)",
-          pointerEvents: "none",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: "radial-gradient(circle at center, transparent 20%, #0e0e0e 90%)",
-          pointerEvents: "none",
-        }}
-      />
-      <div className="container contact-container" style={{ maxWidth: "1100px", position: "relative", zIndex: 10 }}>
+    <section id="contact" className="py-20 md:py-32 relative bg-neutral-950/70 border-t border-white/5">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
-          style={{ marginBottom: "60px", textAlign: "center" }}
-        >
-          <span style={{ color: "var(--accent)", fontFamily: "var(--font-syne)", fontSize: "clamp(0.7rem, 2vw, 0.8rem)", textTransform: "uppercase", letterSpacing: "0.2em", fontWeight: 700 }}>
-            GET IN TOUCH
+        <div className="max-w-2xl mb-14 md:mb-16">
+          <span className="text-[#ff3e00] font-mono tracking-widest text-xs uppercase font-semibold block mb-3">
+            [ INITIATE COLLABORATION ]
           </span>
-          <h2 className="huge-type" style={{ fontSize: "clamp(2rem, 5vw, 4rem)", marginTop: "10px", lineHeight: 1.1 }}>
-            LET&apos;S BUILD SOMETHING GREAT
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-syne">
+            Let&apos;s Build Something Great
           </h2>
-          <p style={{ color: "#888", maxWidth: "600px", margin: "16px auto 0", fontSize: "clamp(0.85rem, 2vw, 0.95rem)" }}>
-            Have a project in mind, a freelance inquiry, or want to discuss full-stack engineering opportunities? Drop a message below!
+          <p className="text-neutral-400 mt-4 text-sm md:text-base leading-relaxed font-sans">
+            Have a project in mind, a freelance inquiry, or want to discuss full-time engineering roles? Drop a message below or connect directly.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Contact Layout */}
-        <div className="contact-layout" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "clamp(2rem, 5vw, 3rem)", alignItems: "start" }}>
+        {/* 2-Column Contact Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           
-          {/* Left Column: Direct Info Cards */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7 }}
-            style={{ display: "flex", flexDirection: "column", gap: "24px" }}
-          >
+          {/* Left Column: Direct Info & Availability */}
+          <div className="lg:col-span-5 space-y-4">
             
-            <div className="contact-info-card" style={{ border: "1px solid rgba(255,255,255,0.08)", borderRadius: "16px", boxShadow: "0 10px 30px rgba(0,0,0,0.3)" }}>
-              <h3 style={{ fontFamily: "var(--font-syne)", fontSize: "clamp(1rem, 2.5vw, 1.25rem)", color: "#fff", marginBottom: "24px", fontWeight: 700 }}>
-                Contact Details
+            {/* Direct Contact Cards */}
+            <div className="p-6 rounded-2xl bg-neutral-900/50 border border-white/5 space-y-5">
+              <h3 className="text-base font-bold text-white font-syne">
+                Direct Contact Information
               </h3>
-              
-              <div className="contact-details" style={{ display: "flex", flexDirection: "column", gap: "22px" }}>
-                <motion.a
-                  whileHover={{ x: 6 }}
+
+              <div className="space-y-4">
+                {/* Email */}
+                <a
                   href="mailto:jeevananthanjeeva170902@gmail.com"
-                  style={{ display: "flex", alignItems: "center", gap: "16px", textDecoration: "none", color: "inherit" }}
+                  className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 transition-colors group"
                 >
-                <div style={{ width: "46px", height: "46px", borderRadius: "12px", background: "rgba(255, 62, 0, 0.1)", border: "1px solid var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent)" }}>
-                  <Mail size={20} />
-                </div>
-                <div>
-                  <div style={{ fontSize: "clamp(0.65rem, 1.8vw, 0.75rem)", color: "#777", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>Email</div>
-                  <div style={{ fontSize: "clamp(0.8rem, 2vw, 0.95rem)", color: "#eee", fontWeight: 500 }}>jeevananthanjeeva170902@gmail.com</div>
-                </div>
-                </motion.a>
+                  <div className="w-10 h-10 rounded-lg bg-[#ff3e00]/10 border border-[#ff3e00]/25 flex items-center justify-center text-[#ff3e00] group-hover:scale-105 transition-transform shrink-0">
+                    <Mail size={18} />
+                  </div>
+                  <div className="overflow-hidden">
+                    <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-wider block">Email</span>
+                    <span className="text-xs sm:text-sm text-neutral-200 font-medium truncate block group-hover:text-white transition-colors">
+                      jeevananthanjeeva170902@gmail.com
+                    </span>
+                  </div>
+                </a>
 
-                  <motion.a
-                   whileHover={{ x: 6 }}
-                   href="tel:+916374230015"
-                   className="contact-link"
-                  style={{ display: "flex", alignItems: "center", gap: "16px", textDecoration: "none", color: "inherit" }}
+                {/* Phone */}
+                <a
+                  href="tel:+916374230015"
+                  className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] hover:bg-white/[0.05] border border-white/5 transition-colors group"
                 >
-                  <div style={{ width: "46px", height: "46px", borderRadius: "12px", background: "rgba(255, 62, 0, 0.1)", border: "1px solid var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent)" }}>
-                    <Phone size={20} />
+                  <div className="w-10 h-10 rounded-lg bg-[#ff3e00]/10 border border-[#ff3e00]/25 flex items-center justify-center text-[#ff3e00] group-hover:scale-105 transition-transform shrink-0">
+                    <Phone size={18} />
                   </div>
                   <div>
-                    <div style={{ fontSize: "0.75rem", color: "#777", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>Phone</div>
-                    <div style={{ fontSize: "0.95rem", color: "#eee", fontWeight: 500 }}>+91 63742 30015</div>
+                    <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-wider block">Phone / WhatsApp</span>
+                    <span className="text-xs sm:text-sm text-neutral-200 font-medium group-hover:text-white transition-colors">
+                      +91 63742 30015
+                    </span>
                   </div>
-                </motion.a>
+                </a>
 
-                <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-                  <div style={{ width: "46px", height: "46px", borderRadius: "12px", background: "rgba(255, 62, 0, 0.1)", border: "1px solid var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--accent)" }}>
-                    <MapPin size={20} />
+                {/* Location */}
+                <div className="flex items-center gap-3.5 p-3 rounded-xl bg-white/[0.02] border border-white/5">
+                  <div className="w-10 h-10 rounded-lg bg-[#ff3e00]/10 border border-[#ff3e00]/25 flex items-center justify-center text-[#ff3e00] shrink-0">
+                    <MapPin size={18} />
                   </div>
                   <div>
-                    <div style={{ fontSize: "0.75rem", color: "#777", textTransform: "uppercase", letterSpacing: "0.05em", fontWeight: 600 }}>Location</div>
-                    <div style={{ fontSize: "0.95rem", color: "#eee", fontWeight: 500 }}>Salem, Tamil Nadu, India</div>
+                    <span className="text-[10px] text-neutral-500 font-mono uppercase tracking-wider block">Location</span>
+                    <span className="text-xs sm:text-sm text-neutral-200 font-medium">
+                      Salem, Tamil Nadu, India (IST / UTC+5:30)
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Availability Badge */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              style={{ background: "linear-gradient(135deg, rgba(255,62,0,0.12) 0%, rgba(20,20,20,0.6) 100%)", border: "1px solid rgba(255,62,0,0.35)", borderRadius: "16px", padding: "24px", display: "flex", alignItems: "center", gap: "16px" }}
-            >
-              <div style={{ width: "12px", height: "12px", borderRadius: "50%", background: "#10b981", boxShadow: "0 0 12px #10b981", flexShrink: 0 }} />
+            {/* Availability Status Card */}
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-[#ff3e00]/10 via-neutral-900/60 to-neutral-900 border border-[#ff3e00]/20 flex items-start gap-3.5">
+              <span className="w-3 h-3 rounded-full bg-emerald-400 mt-1 shrink-0 animate-pulse shadow-md shadow-emerald-400/50" />
               <div>
-                   <div style={{ fontSize: "clamp(0.8rem, 2vw, 0.92rem)", color: "#fff", fontWeight: 700 }}>Currently Available</div>
-                   <div style={{ fontSize: "clamp(0.7rem, 1.8vw, 0.82rem)", color: "#aaa" }}>Accepting full-time roles & freelance contracts</div>
+                <h4 className="font-bold text-sm text-white font-syne">Current Availability</h4>
+                <p className="text-xs text-neutral-400 mt-1 leading-relaxed font-sans">
+                  Actively accepting full-time web developer roles, contractual engineering engagements, and bespoke React/Node applications.
+                </p>
+                <div className="flex items-center gap-1.5 text-[11px] font-mono text-neutral-400 mt-2.5">
+                  <Clock size={12} className="text-[#ff3e00]" />
+                  <span>Response time: Typically within 24 hours</span>
+                </div>
               </div>
-            </motion.div>
+            </div>
 
-          </motion.div>
+          </div>
 
           {/* Right Column: Contact Form */}
-          <motion.form
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, delay: 0.15 }}
-            onSubmit={handleSubmit}
-            style={{
-              background: "rgba(255, 255, 255, 0.02)",
-              border: "1px solid rgba(255, 255, 255, 0.08)",
-              borderRadius: "16px",
-              padding: "36px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "20px",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
-            }}
-          >
-            {isSubmitted ? (
-              <motion.div initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} style={{ textAlign: "center", padding: "40px 20px" }}>
-                <CheckCircle2 size={56} color="var(--accent)" style={{ margin: "0 auto 16px" }} />
-                <h3 style={{ fontFamily: "var(--font-syne)", fontSize: "1.4rem", color: "#fff", marginBottom: "8px", fontWeight: 700 }}>
-                  Message Received!
-                </h3>
-                <p style={{ color: "#aaa", fontSize: "0.9rem", marginBottom: "24px" }}>
-                  Thank you for reaching out. Jeevananthan will get back to you shortly.
-                </p>
-                <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.96 }}
-                  type="button"
-                  onClick={() => setIsSubmitted(false)}
-                  style={{
-                    padding: "10px 24px",
-                    background: "rgba(255,255,255,0.06)",
-                    border: "1px solid rgba(255,255,255,0.15)",
-                    borderRadius: "8px",
-                    color: "#fff",
-                    fontSize: "0.85rem",
-                    cursor: "pointer",
-                    fontWeight: 600,
-                  }}
-                >
-                  Send Another Message
-                </motion.button>
-              </motion.div>
-            ) : (
-              <>
-                <div>
-                  <label style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#aaa", marginBottom: "8px", fontWeight: 600 }}>
-                    Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="John Doe"
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      background: "rgba(255, 255, 255, 0.04)",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
-                      borderRadius: "8px",
-                      color: "#fff",
-                      fontSize: "0.9rem",
-                      outline: "none",
-                      transition: "border-color 0.2s ease",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#aaa", marginBottom: "8px", fontWeight: 600 }}>
-                    Your Email *
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="john@example.com"
-                    value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      background: "rgba(255, 255, 255, 0.04)",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
-                      borderRadius: "8px",
-                      color: "#fff",
-                      fontSize: "0.9rem",
-                      outline: "none",
-                      transition: "border-color 0.2s ease",
-                    }}
-                  />
-                </div>
-
-                <div>
-                  <label style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#aaa", marginBottom: "8px", fontWeight: 600 }}>
-                    Project Type / Subject
-                  </label>
-                  <select
-                    value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      background: "#161616",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
-                      borderRadius: "8px",
-                      color: "#fff",
-                      fontSize: "0.9rem",
-                      outline: "none",
-                    }}
+          <div className="lg:col-span-7">
+            <form
+              onSubmit={handleSubmit}
+              className="p-6 sm:p-8 rounded-2xl bg-neutral-900/50 border border-white/5 flex flex-col gap-4 shadow-xl"
+            >
+              {isSubmitted ? (
+                <div className="text-center py-12 px-4">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mx-auto mb-4 text-emerald-400">
+                    <CheckCircle2 size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold text-white font-syne mb-2">
+                    Message Dispatched!
+                  </h3>
+                  <p className="text-sm text-neutral-400 max-w-md mx-auto mb-6">
+                    Thank you for reaching out. Jeevananthan has received your inquiry and will follow up shortly.
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setIsSubmitted(false)}
+                    className="px-5 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold text-xs font-syne transition-colors"
                   >
-                    <option value="Full-Stack Project">Full-Stack Application</option>
-                    <option value="React Frontend">React.js Frontend</option>
-                    <option value="Node Backend">Node.js / Express Backend</option>
-                    <option value="Freelance Inquiry">Freelance Project</option>
-                    <option value="Job Opportunity">Full-time Role Inquiry</option>
-                    <option value="Other">Other Inquiry</option>
-                  </select>
+                    Send Another Message
+                  </button>
                 </div>
+              ) : (
+                <>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Name */}
+                    <div>
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5 font-semibold">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="John Doe"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs sm:text-sm placeholder-neutral-500 outline-none focus:border-[#ff3e00] focus:ring-1 focus:ring-[#ff3e00] transition-colors font-sans"
+                      />
+                    </div>
 
-                <div>
-                  <label style={{ display: "block", fontSize: "0.75rem", textTransform: "uppercase", letterSpacing: "0.1em", color: "#aaa", marginBottom: "8px", fontWeight: 600 }}>
-                    Your Message *
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder="Tell me about your project goals, timeline, or scope..."
-                    value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    style={{
-                      width: "100%",
-                      padding: "12px 16px",
-                      background: "rgba(255, 255, 255, 0.04)",
-                      border: "1px solid rgba(255, 255, 255, 0.12)",
-                      borderRadius: "8px",
-                      color: "#fff",
-                      fontSize: "0.9rem",
-                      outline: "none",
-                      resize: "vertical",
-                    }}
-                  />
-                </div>
+                    {/* Email */}
+                    <div>
+                      <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5 font-semibold">
+                        Your Email *
+                      </label>
+                      <input
+                        type="email"
+                        required
+                        placeholder="john@example.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs sm:text-sm placeholder-neutral-500 outline-none focus:border-[#ff3e00] focus:ring-1 focus:ring-[#ff3e00] transition-colors font-sans"
+                      />
+                    </div>
+                  </div>
 
-                <motion.button
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  type="submit"
-                  disabled={isSubmitting}
-                  style={{
-                    padding: "14px 28px",
-                    background: "var(--accent)",
-                    color: "#0e0e0e",
-                    fontFamily: "var(--font-syne)",
-                    fontWeight: 800,
-                    fontSize: "0.85rem",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    border: "none",
-                    borderRadius: "8px",
-                    cursor: isSubmitting ? "wait" : "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                    marginTop: "8px",
-                    opacity: isSubmitting ? 0.7 : 1,
-                  }}
-                >
-                  {isSubmitting ? "Sending Message..." : "Send Message"}
-                  {!isSubmitting && <Send size={16} />}
-                </motion.button>
-              </>
-            )}
-          </motion.form>
+                  {/* Subject Dropdown */}
+                  <div>
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5 font-semibold">
+                      Project Nature / Inquiry
+                    </label>
+                    <select
+                      value={formData.subject}
+                      onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-neutral-900 border border-white/10 text-white text-xs sm:text-sm outline-none focus:border-[#ff3e00] focus:ring-1 focus:ring-[#ff3e00] transition-colors font-sans cursor-pointer"
+                    >
+                      <option value="Full-Stack Project">Full-Stack Application Development</option>
+                      <option value="React Frontend">React 19 / Next.js Frontend</option>
+                      <option value="Node Backend">Node.js / Express API Backend</option>
+                      <option value="Freelance Inquiry">Freelance Project Engagement</option>
+                      <option value="Job Opportunity">Full-Time Engineering Role Inquiry</option>
+                      <option value="Other">Other Inquiry</option>
+                    </select>
+                  </div>
+
+                  {/* Message */}
+                  <div>
+                    <label className="block text-[11px] font-mono uppercase tracking-wider text-neutral-400 mb-1.5 font-semibold">
+                      Your Message *
+                    </label>
+                    <textarea
+                      required
+                      rows={4}
+                      placeholder="Describe your project requirements, timeline, or engineering goals..."
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      className="w-full px-4 py-2.5 rounded-xl bg-black/40 border border-white/10 text-white text-xs sm:text-sm placeholder-neutral-500 outline-none focus:border-[#ff3e00] focus:ring-1 focus:ring-[#ff3e00] transition-colors font-sans resize-y"
+                    />
+                  </div>
+
+                  {/* Submit Button */}
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className="w-full py-3.5 rounded-xl bg-[#ff3e00] hover:bg-[#ff3e00]/90 text-black font-extrabold text-xs uppercase tracking-wider font-syne flex items-center justify-center gap-2 shadow-lg shadow-[#ff3e00]/25 transition-all duration-200 cursor-pointer disabled:opacity-60 disabled:cursor-wait"
+                  >
+                    {isSubmitting ? (
+                      <span>Dispatching Message...</span>
+                    ) : (
+                      <>
+                        <span>Send Message</span>
+                        <Send size={14} />
+                      </>
+                    )}
+                  </button>
+                </>
+              )}
+            </form>
+          </div>
 
         </div>
+
       </div>
     </section>
   )
 }
-
