@@ -2,74 +2,87 @@
 
 import { useRef, useEffect, useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, Sparkles, Terminal, Code, Cpu, Database, Flame, Box, Volume2, VolumeX, Play, Pause, RefreshCw, Sliders, MessageSquare, Video, Activity, Loader2 } from "lucide-react"
+import { 
+  ArrowUpRight, 
+  Sparkles, 
+  Terminal, 
+  Code2, 
+  Cpu, 
+  Database, 
+  Flame, 
+  Volume2, 
+  VolumeX, 
+  ArrowDown, 
+  Mail, 
+  Github, 
+  Layers, 
+  CheckCircle2, 
+  Copy, 
+  Check 
+} from "lucide-react"
 import { motion } from "motion/react"
 import Navbar from "@/components/Navbar"
 import GSAPScrollController from "@/components/animation/GSAPScrollController"
-import BackgroundVideoContainer from "@/components/ui/BackgroundVideoContainer"
 
 const techPills = [
-  { name: "React 19", icon: Code },
-  { name: "Node.js", icon: Terminal },
-  { name: "Express.js", icon: Cpu },
-  { name: "MySQL / Postgre", icon: Database },
-  { name: "Salesforce Apex", icon: Flame },
+  { name: "React 19", icon: Code2, color: "#61dafb" },
+  { name: "Node.js", icon: Terminal, color: "#68a063" },
+  { name: "Express.js", icon: Cpu, color: "#ffffff" },
+  { name: "MySQL / SQL", icon: Database, color: "#00758f" },
+  { name: "Salesforce Apex", icon: Flame, color: "#00a1e0" },
 ]
 
 export default function Hero() {
-  const [isTouch, setIsTouch] = useState(false)
   const [isPlayingAudio, setIsPlayingAudio] = useState(false)
   const [terminalLine, setTerminalLine] = useState(0)
+  const [copiedEmail, setCopiedEmail] = useState(false)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const audioTimerRef = useRef<number | null>(null)
-  
-  const terminalLines = [
-    "$ init jeevananthan-profile",
-    "> Loading full-stack framework... [DONE]",
-    "> Establishing Salesforce API Tunnel... [OK]",
-    "> System Status: Open to collaborate.",
-    "$ npm run develop-dreams",
-    "> Compile complete. Interactive Portfolio is live!"
+
+  const terminalLogs = [
+    { text: "$ init jeevananthan-profile --environment=production", type: "cmd" },
+    { text: "✔ Full Stack Core initialized (React 19 + Node.js)", type: "success" },
+    { text: "✔ Database schema ready (13+ normalized tables)", type: "success" },
+    { text: "✔ Payment gateways connected (Razorpay webhook verify)", type: "success" },
+    { text: "$ cat developer-status.json", type: "cmd" },
+    { text: '{\n  "location": "Salem, TN, India",\n  "status": "Available for Full-Time & Freelance",\n  "experience": "Ethiroli Pvt Ltd & Jayalakshmi Groups"\n}', type: "json" },
   ]
 
   useEffect(() => {
-    setIsTouch(window.matchMedia("(hover: none) and (pointer: coarse)").matches)
-    
-    // Auto typing terminal effect
     const interval = setInterval(() => {
-      setTerminalLine((prev) => (prev + 1) % (terminalLines.length + 1))
-    }, 3500)
+      setTerminalLine((prev) => (prev + 1) % (terminalLogs.length + 1))
+    }, 3200)
 
-    // Canvas background particles
+    // Canvas background particle stream
     const canvas = canvasRef.current
     if (canvas) {
       const ctx = canvas.getContext("2d")
       if (ctx) {
         let animationFrameId: number
-        let particles: Array<{ x: number; y: number; speed: number; radius: number; opacity: number }> = []
-        
+        const particles: Array<{ x: number; y: number; speed: number; radius: number; opacity: number }> = []
+
         const resizeCanvas = () => {
+          if (!canvas) return
           canvas.width = canvas.parentElement?.offsetWidth || window.innerWidth
           canvas.height = canvas.parentElement?.offsetHeight || window.innerHeight
         }
         resizeCanvas()
         window.addEventListener("resize", resizeCanvas)
 
-        // Initialize particles
-        for (let i = 0; i < 40; i++) {
+        for (let i = 0; i < 35; i++) {
           particles.push({
             x: Math.random() * canvas.width,
             y: Math.random() * canvas.height,
-            speed: 0.2 + Math.random() * 0.5,
-            radius: 1 + Math.random() * 2,
-            opacity: 0.15 + Math.random() * 0.4
+            speed: 0.2 + Math.random() * 0.4,
+            radius: 1 + Math.random() * 1.8,
+            opacity: 0.15 + Math.random() * 0.35,
           })
         }
 
         const animate = () => {
           ctx.clearRect(0, 0, canvas.width, canvas.height)
-          ctx.fillStyle = "rgba(255, 62, 0, 0.45)"
-          
+          ctx.fillStyle = "#ff3e00"
+
           particles.forEach((p) => {
             p.y -= p.speed
             if (p.y < 0) {
@@ -81,7 +94,7 @@ export default function Hero() {
             ctx.globalAlpha = p.opacity
             ctx.fill()
           })
-          
+
           animationFrameId = requestAnimationFrame(animate)
         }
         animate()
@@ -93,9 +106,7 @@ export default function Hero() {
       }
     }
 
-    return () => {
-      clearInterval(interval)
-    }
+    return () => clearInterval(interval)
   }, [])
 
   const handlePlayVoiceIntro = () => {
@@ -115,425 +126,298 @@ export default function Hero() {
 
     setIsPlayingAudio(true)
 
-    // Speech Text
-    const speechText = "Hello! I am Jeevananthan V, a Full Stack Developer based in Salem, Tamil Nadu. Welcome to my digital portfolio! I build high-performance web applications with React, Node.js, and Salesforce Apex. I hope you enjoy exploring my work!"
+    const speechText =
+      "Hello! I am Jeevananthan V, a Full Stack Developer based in Salem, Tamil Nadu. Welcome to my portfolio! I build scalable web applications with React, Node.js, Express, and Salesforce Apex. I hope you enjoy exploring my work!"
 
     if (window.speechSynthesis) {
       window.speechSynthesis.cancel()
       const utterance = new SpeechSynthesisUtterance(speechText)
       utterance.rate = 1.02
-      utterance.pitch = 0.96
+      utterance.pitch = 0.98
 
-      // Select high quality voice if available
       const voices = window.speechSynthesis.getVoices()
-      const primaryVoice = voices.find(v => v.name.toLowerCase().includes("google uk english male") || v.name.toLowerCase().includes("male") || v.lang.startsWith("en"))
+      const primaryVoice = voices.find(
+        (v) =>
+          v.name.toLowerCase().includes("google uk english male") ||
+          v.name.toLowerCase().includes("natural") ||
+          v.lang.startsWith("en")
+      )
       if (primaryVoice) utterance.voice = primaryVoice
 
-      utterance.onend = () => {
-        setIsPlayingAudio(false)
-      }
-      utterance.onerror = () => {
-        setIsPlayingAudio(false)
-      }
+      utterance.onend = () => setIsPlayingAudio(false)
+      utterance.onerror = () => setIsPlayingAudio(false)
 
       window.speechSynthesis.speak(utterance)
-      
-      // Fallback timer for browsers that restrict speechSynthesis
+
       audioTimerRef.current = window.setTimeout(() => {
         setIsPlayingAudio(false)
       }, 16000)
     } else {
-      // Direct visual simulation fallback
       audioTimerRef.current = window.setTimeout(() => {
         setIsPlayingAudio(false)
       }, 8000)
     }
   }
 
-  useEffect(() => {
-    return () => {
-      if (audioTimerRef.current) {
-        clearTimeout(audioTimerRef.current)
-      }
-      if (typeof window !== "undefined" && window.speechSynthesis) {
-        window.speechSynthesis.cancel()
-      }
-    }
-  }, [])
+  const copyEmail = () => {
+    navigator.clipboard.writeText("jeevananthanjeeva170902@gmail.com")
+    setCopiedEmail(true)
+    setTimeout(() => setCopiedEmail(false), 2000)
+  }
 
   return (
     <>
       <GSAPScrollController />
-      <div className="blob" aria-hidden="true" />
       <Navbar />
 
-      {/* Dynamic Keyframe style injector for background video simulation */}
-      <style dangerouslySetInnerHTML={{__html: `
-        @keyframes kenburns {
-          0% { transform: scale(1.02) translate(0, 0); }
-          50% { transform: scale(1.10) translate(-0.8%, 1.2%); }
-          100% { transform: scale(1.02) translate(0, 0); }
-        }
-        @keyframes audio-wave-anim {
-          0%, 100% { height: 4px; }
-          50% { height: 18px; }
-        }
-      `}} />
-
-      {/* Hero Section */}
-      <section id="hero" className="hero-section" style={{ minHeight: "100vh", padding: "clamp(4rem, 10vw, 8.75rem) 0 clamp(3rem, 7vw, 5rem)", overflow: "hidden" }}>
-        
-        {/* Dynamic Image Background acting as background video */}
-        <div style={{ position: "absolute", inset: 0, overflow: "hidden", zIndex: 1, background: "#050505" }}>
-          <img
-            src="/jeevan.jpg"
-            alt="Dynamic Atmosphere Backdrop"
+      <section
+        id="hero"
+        className="relative min-h-[100svh] flex items-center justify-center pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden"
+      >
+        {/* Ambient Dark Gradient & Radial Lighting */}
+        <div className="absolute inset-0 bg-neutral-950 -z-20">
+          <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ff3e00]/10 blur-[160px] rounded-full pointer-events-none" />
+          <div className="absolute bottom-1/4 right-1/4 w-[450px] h-[450px] bg-amber-600/5 blur-[140px] rounded-full pointer-events-none" />
+          {/* Subtle Grid Pattern Overlay */}
+          <div 
+            className="absolute inset-0 opacity-[0.03] pointer-events-none"
             style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-              objectPosition: "center 20%",
-              filter: "brightness(0.35) contrast(1.1) saturate(0.9)",
-              opacity: 0.45,
-              animation: "kenburns 22s infinite ease-in-out",
-            }}
-          />
-          {/* Active Canvas Floating Particle Stream Overlay */}
-          <canvas
-            ref={canvasRef}
-            style={{
-              position: "absolute",
-              inset: 0,
-              width: "100%",
-              height: "100%",
-              pointerEvents: "none",
-              mixBlendMode: "screen"
-            }}
-          />
-          {/* Dark Glassmorphic Vignette Mask */}
-          <div
-            style={{
-              position: "absolute",
-              inset: 0,
-              background: "radial-gradient(circle at 50% 50%, rgba(10, 10, 10, 0.15) 0%, rgba(10, 10, 10, 0.95) 100%), linear-gradient(180deg, rgba(10,10,10,0.2) 0%, rgba(10,10,10,0.6) 100%)",
+              backgroundImage: "linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)",
+              backgroundSize: "48px 48px"
             }}
           />
         </div>
 
-        <div className="container hero-container" style={{ position: "relative", zIndex: 10, width: "100%", maxWidth: "1280px" }}>
-          
-          <div className="hero-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "clamp(2rem, 5vw, 3.5rem)", alignItems: "center" }}>
+        {/* Live Canvas Particle Stream */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full pointer-events-none -z-10 mix-blend-screen opacity-70"
+        />
+
+        <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             
-            {/* Left Content Column */}
-            <div className="hero-content">
+            {/* Left Column: Hero Content & Value Proposition */}
+            <div className="lg:col-span-7 flex flex-col items-start text-left">
+              
               {/* Status Badge */}
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, ease: "backOut" }}
-                style={{ marginBottom: "20px" }}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#ff3e00]/10 border border-[#ff3e00]/25 text-[#ff3e00] text-xs font-mono font-medium tracking-wide mb-6 shadow-sm shadow-[#ff3e00]/10"
               >
-                <span
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                    padding: "6px 16px",
-                    border: "1px solid var(--accent)",
-                    color: "var(--accent)",
-                    fontFamily: "var(--font-inter)",
-                    fontSize: "clamp(0.65rem, 1.8vw, 0.75rem)",
-                    fontWeight: 600,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    borderRadius: "999px",
-                    background: "rgba(255, 62, 0, 0.08)",
-                    boxShadow: "0 0 16px rgba(255, 62, 0, 0.15)",
-                  }}
-                >
-                  <Sparkles size={14} /> OPEN FOR FULL-TIME & FREELANCE ROLES
-                </span>
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span>OPEN FOR FULL-TIME & FREELANCE ROLES</span>
               </motion.div>
 
-              {/* Animated Hero Name Heading */}
-              <div className="hero-title-container" style={{ maxWidth: "100%" }}>
-                <h1
-                  className="hero-name-heading"
-                  style={{
-                    fontFamily: "var(--font-syne)",
-                    fontWeight: 800,
-                    fontSize: "clamp(2.2rem, 6.5vw, 6.8rem)",
-                    lineHeight: 1.05,
-                    letterSpacing: "-0.03em",
-                    textTransform: "uppercase",
-                    wordBreak: "break-word",
-                    margin: 0,
-                    color: "#ffffff",
-                    textAlign: "left",
-                  }}
+              {/* Main Headline */}
+              <div className="max-w-2xl">
+                <motion.h1
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.1 }}
+                  className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight font-syne text-white leading-[1.05]"
                 >
-                  <div style={{ overflow: "hidden", display: "inline-block", marginRight: "16px" }}>
-                    <motion.span
-                      initial={{ y: "100%", display: "inline-block" }}
-                      animate={{ y: 0 }}
-                      transition={{ duration: 0.9, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                    >
-                      JEEVANANTHAN
-                    </motion.span>
-                  </div>
-                  <div style={{ overflow: "hidden", display: "inline-block" }}>
-                    <motion.span
-                      initial={{ y: "100%", display: "inline-block" }}
-                      animate={{ y: 0 }}
-                      transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-                      style={{ color: "var(--accent)" }}
-                    >
-                      V
-                    </motion.span>
-                  </div>
-                  <motion.span 
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, delay: 0.35 }}
-                    style={{ display: "block", fontSize: "clamp(0.9rem, 2vw, 1.1rem)", fontWeight: 600, letterSpacing: "0.08em", color: "#aaa", marginTop: "12px", textTransform: "none" }}
-                  >
-                    Full Stack Developer — Salem, TN
-                  </motion.span>
-                </h1>
+                  JEEVANANTHAN{" "}
+                  <span className="text-[#ff3e00]">V</span>
+                </motion.h1>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.2 }}
+                  className="text-lg sm:text-xl md:text-2xl font-semibold text-neutral-200 mt-3 font-syne tracking-tight"
+                >
+                  Full Stack Developer & Systems Engineer
+                </motion.p>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.3 }}
+                  className="text-sm sm:text-base text-neutral-400 mt-4 leading-relaxed font-sans max-w-xl"
+                >
+                  Based in <strong className="text-neutral-200 font-semibold">Salem, Tamil Nadu</strong>. 
+                  Engineering scalable web platforms, high-throughput REST APIs, and production database architectures with 
+                  professional tenure across <span className="text-neutral-300">Ethiroli Pvt Ltd</span> and <span className="text-neutral-300">Jayalakshmi Groups</span>.
+                </motion.p>
               </div>
 
-              {/* Subtitle & Role */}
+              {/* Tech Stack Pills */}
               <motion.div
-                initial={{ opacity: 0, y: 25 }}
+                initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.25, ease: "easeOut" }}
-                style={{ marginTop: "20px" }}
-              >
-                <p
-                  style={{
-                    fontSize: "clamp(1.1rem, 2.2vw, 1.5rem)",
-                    fontWeight: 500,
-                    color: "#eee",
-                    fontFamily: "var(--font-inter)",
-                  }}
-                >
-                  Full Stack Web Developer & Software Engineer
-                </p>
-                <p
-                  style={{
-                    fontSize: "clamp(0.8rem, 1.8vw, 0.92rem)",
-                    color: "#888",
-                    fontFamily: "var(--font-inter)",
-                    marginTop: "8px",
-                  }}
-                >
-                  Based in Salem, Tamil Nadu, India — Specializing in React.js, Node.js, & Scalable Web Applications
-                </p>
-              </motion.div>
-
-              {/* Interactive Tech Stack Pills */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.35 }}
-                style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginTop: "24px" }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="flex flex-wrap items-center gap-2 mt-6"
               >
                 {techPills.map((tech) => {
-                  const IconComponent = tech.icon
+                  const Icon = tech.icon
                   return (
-                    <motion.div
+                    <div
                       key={tech.name}
-                      whileHover={{ scale: 1.06, y: -3, borderColor: "var(--accent)" }}
-                      whileTap={{ scale: 0.96 }}
-                      style={{
-                        display: "flex",
-                        alignItems: "center",
-                        gap: "6px",
-                        padding: "6px 14px",
-                        background: "rgba(255, 255, 255, 0.03)",
-                        border: "1px solid rgba(255, 255, 255, 0.1)",
-                        borderRadius: "999px",
-                        fontSize: "clamp(0.65rem, 1.8vw, 0.8rem)",
-                        color: "#ccc",
-                        cursor: "default",
-                        backdropFilter: "blur(8px)",
-                      }}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 text-xs font-mono text-neutral-300 hover:border-[#ff3e00]/50 hover:bg-[#ff3e00]/5 transition-all duration-200"
                     >
-                      <IconComponent size={14} color="var(--accent)" />
+                      <Icon size={13} className="text-[#ff3e00]" />
                       <span>{tech.name}</span>
-                    </motion.div>
+                    </div>
                   )
                 })}
               </motion.div>
 
-              {/* Action Callouts */}
+              {/* Action Buttons Row */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
-                className="hero-controls-row"
-                style={{ marginTop: "32px", display: "flex", gap: "16px", flexWrap: "wrap", alignItems: "center" }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex flex-wrap items-center gap-3.5 mt-8 w-full sm:w-auto"
               >
-                <motion.a
+                <a
                   href="#work"
-                  whileHover={{ scale: 1.04, boxShadow: "0 10px 25px rgba(255, 62, 0, 0.3)" }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{
-                    padding: "clamp(0.7rem, 2vw, 0.875rem) clamp(1.5rem, 4vw, 1.75rem)",
-                    background: "var(--accent)",
-                    color: "#0e0e0e",
-                    fontFamily: "var(--font-syne)",
-                    fontWeight: 800,
-                    fontSize: "clamp(0.7rem, 1.8vw, 0.85rem)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    textDecoration: "none",
-                    borderRadius: "6px",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "8px",
-                  }}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-[#ff3e00] hover:bg-[#ff3e00]/90 text-black font-extrabold text-xs uppercase tracking-wider font-syne shadow-lg shadow-[#ff3e00]/25 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
                 >
-                  View Selected Work <ArrowUpRight size={16} />
-                </motion.a>
+                  <span>Explore Projects</span>
+                  <ArrowDown size={14} />
+                </a>
 
-                {/* Voice Intro Connected Audio Button */}
-                <motion.button
+                <a
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold text-xs uppercase tracking-wider font-syne transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <span>Get In Touch</span>
+                  <ArrowUpRight size={14} className="text-[#ff3e00]" />
+                </a>
+
+                {/* Voice Intro Audio Button */}
+                <button
                   onClick={handlePlayVoiceIntro}
-                  whileHover={{ scale: 1.04, borderColor: "rgba(255, 62, 0, 0.5)", background: "rgba(255, 62, 0, 0.08)" }}
-                  whileTap={{ scale: 0.98 }}
-                  style={{
-                    padding: "clamp(0.7rem, 2vw, 0.875rem) clamp(1.2rem, 3.5vw, 1.5rem)",
-                    background: isPlayingAudio ? "rgba(255, 62, 0, 0.12)" : "rgba(255, 255, 255, 0.03)",
-                    border: isPlayingAudio ? "1px solid var(--accent)" : "1px solid rgba(255, 255, 255, 0.15)",
-                    color: "#fff",
-                    fontFamily: "var(--font-syne)",
-                    fontWeight: 700,
-                    fontSize: "clamp(0.7rem, 1.8vw, 0.85rem)",
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    borderRadius: "6px",
-                    cursor: "pointer",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "10px",
-                  }}
+                  aria-label="Listen to voice intro"
+                  className={`inline-flex items-center gap-2.5 px-4 py-3 rounded-xl text-xs font-semibold font-syne uppercase tracking-wider transition-all duration-200 border ${
+                    isPlayingAudio
+                      ? "bg-[#ff3e00]/15 border-[#ff3e00] text-[#ff3e00]"
+                      : "bg-white/5 border-white/10 text-neutral-300 hover:text-white hover:bg-white/10"
+                  }`}
                 >
                   {isPlayingAudio ? (
                     <>
-                      <span>Mute Audio</span>
-                      <div style={{ display: "flex", alignItems: "center", gap: "2px", height: "18px" }}>
-                        <div style={{ width: "3px", background: "var(--accent)", animation: "audio-wave-anim 0.8s infinite ease-in-out", animationDelay: "0.1s" }} />
-                        <div style={{ width: "3px", background: "var(--accent)", animation: "audio-wave-anim 0.8s infinite ease-in-out", animationDelay: "0.3s" }} />
-                        <div style={{ width: "3px", background: "var(--accent)", animation: "audio-wave-anim 0.8s infinite ease-in-out", animationDelay: "0.5s" }} />
+                      <span>Mute Intro</span>
+                      <div className="flex items-center gap-0.5 h-3">
+                        <span className="w-1 bg-[#ff3e00] rounded-full audio-bar-1" />
+                        <span className="w-1 bg-[#ff3e00] rounded-full audio-bar-2" />
+                        <span className="w-1 bg-[#ff3e00] rounded-full audio-bar-3" />
                       </div>
                     </>
                   ) : (
                     <>
-                      <span>Listen to Audio</span>
-                      <Volume2 size={16} color="var(--accent)" />
+                      <Volume2 size={15} className="text-[#ff3e00]" />
+                      <span>Audio Intro</span>
                     </>
                   )}
-                </motion.button>
+                </button>
               </motion.div>
+
             </div>
 
-            {/* Right Column: Premium Developer Terminal Console Redesign */}
+            {/* Right Column: Interactive Developer Workstation Terminal Console */}
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="hero-tech-showcase"
-              style={{ position: "relative", minHeight: "clamp(300px, 45vw, 420px)", width: "100%" }}
+              className="lg:col-span-5 w-full mt-4 lg:mt-0"
             >
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  minHeight: "clamp(300px, 45vw, 420px)",
-                  borderRadius: "16px",
-                  background: "rgba(10, 10, 10, 0.7)",
-                  border: "1px solid rgba(255, 255, 255, 0.1)",
-                  backdropFilter: "blur(16px)",
-                  boxShadow: "0 30px 60px rgba(0,0,0,0.8)",
-                  padding: "24px",
-                  fontFamily: "var(--font-mono, monospace)",
-                  display: "flex",
-                  flexDirection: "column",
-                  overflow: "hidden"
-                }}
-              >
-                {/* Windows/Mac Mockup Control Dots */}
-                <div style={{ display: "flex", gap: "6px", marginBottom: "20px" }}>
-                  <span style={{ width: "11px", height: "11px", borderRadius: "50%", background: "#ff5f56" }} />
-                  <span style={{ width: "11px", height: "11px", borderRadius: "50%", background: "#ffbd2e" }} />
-                  <span style={{ width: "11px", height: "11px", borderRadius: "50%", background: "#27c93f" }} />
-                </div>
+              <div className="relative rounded-2xl bg-neutral-900/90 border border-white/10 shadow-2xl backdrop-blur-xl overflow-hidden font-mono text-xs">
                 
-                {/* Console Log Feed */}
-                <div style={{ flex: 1, display: "flex", flexDirection: "column", gap: "10px" }}>
-                  {terminalLines.map((line, idx) => {
-                    const isVisible = terminalLine >= idx
-                    if (!isVisible) return null
-                    const isCmd = line.startsWith("$")
-                    return (
-                      <div
-                        key={idx}
-                        style={{
-                          fontSize: "clamp(0.75rem, 1.8vw, 0.85rem)",
-                          color: isCmd ? "var(--accent)" : "#888",
-                          lineHeight: 1.4,
-                          display: "flex",
-                          alignItems: "center",
-                          gap: "8px"
-                        }}
-                      >
-                        {isCmd ? <Terminal size={12} color="var(--accent)" /> : null}
-                        <span>{line}</span>
-                      </div>
-                    )
-                  })}
-                  {/* Blinking Prompt Cursor */}
-                  <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
-                    <span style={{ color: "#444", fontSize: "0.85rem" }}>_</span>
-                    <span
-                      style={{
-                        width: "6px",
-                        height: "14px",
-                        background: "var(--accent)",
-                        animation: "pulse 1s infinite"
-                      }}
-                    />
+                {/* Mac/Unix Terminal Window Header */}
+                <div className="flex items-center justify-between px-4 py-3 bg-neutral-950/80 border-b border-white/5">
+                  <div className="flex items-center gap-2">
+                    <span className="w-3 h-3 rounded-full bg-[#ff5f56]/90 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-[#ffbd2e]/90 inline-block" />
+                    <span className="w-3 h-3 rounded-full bg-[#27c93f]/90 inline-block" />
+                    <span className="text-[11px] text-neutral-500 font-sans ml-2">jeeva@portfolio: ~</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <span className="text-[10px] text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      main [live]
+                    </span>
                   </div>
                 </div>
 
-                {/* Developer Coordinates HUD */}
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    fontSize: "0.68rem",
-                    color: "#555",
-                    borderTop: "1px solid rgba(255, 255, 255, 0.05)",
-                    paddingTop: "12px",
-                    marginTop: "16px"
-                  }}
-                >
-                  <span>LOC: SALEM, TN, IN</span>
-                  <span>UTF-8 // NEXT.JS</span>
+                {/* Terminal Body Logs Feed */}
+                <div className="p-5 flex flex-col gap-2.5 min-h-[260px] max-h-[340px] overflow-y-auto">
+                  {terminalLogs.map((log, idx) => {
+                    const isVisible = terminalLine >= idx
+                    if (!isVisible) return null
+
+                    if (log.type === "cmd") {
+                      return (
+                        <div key={idx} className="text-neutral-300 font-semibold flex items-center gap-1.5">
+                          <span className="text-[#ff3e00] font-bold">➜</span>
+                          <span>{log.text.replace("$ ", "")}</span>
+                        </div>
+                      )
+                    }
+
+                    if (log.type === "success") {
+                      return (
+                        <div key={idx} className="text-emerald-400/90 text-[11px] pl-3 flex items-center gap-1.5">
+                          <span>{log.text}</span>
+                        </div>
+                      )
+                    }
+
+                    if (log.type === "json") {
+                      return (
+                        <pre key={idx} className="text-neutral-400 text-[11px] pl-3 bg-black/40 p-2.5 rounded-lg border border-white/5 leading-relaxed overflow-x-auto">
+                          {log.text}
+                        </pre>
+                      )
+                    }
+
+                    return null
+                  })}
+
+                  {/* Blinking Prompt Cursor */}
+                  <div className="flex items-center gap-1.5 text-neutral-400 mt-1">
+                    <span className="text-[#ff3e00]">➜</span>
+                    <span className="w-2 h-4 bg-[#ff3e00] inline-block animate-pulse" />
+                  </div>
                 </div>
+
+                {/* Telemetry Summary Bar */}
+                <div className="px-4 py-3 bg-neutral-950/90 border-t border-white/5 flex items-center justify-between text-[11px] text-neutral-400">
+                  <div className="flex items-center gap-3">
+                    <span className="flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                      Salem, IN
+                    </span>
+                    <span className="hidden sm:inline text-neutral-600">•</span>
+                    <span className="hidden sm:inline">React 19 + Node</span>
+                  </div>
+                  
+                  <button
+                    onClick={copyEmail}
+                    className="flex items-center gap-1.5 text-[#ff3e00] hover:text-white transition-colors"
+                  >
+                    {copiedEmail ? (
+                      <>
+                        <Check size={12} className="text-emerald-400" />
+                        <span className="text-emerald-400">Copied!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={12} />
+                        <span>Copy Email</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+
               </div>
             </motion.div>
 
           </div>
-
         </div>
       </section>
     </>
   )
 }
-
-
-

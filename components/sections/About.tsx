@@ -1,372 +1,234 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
+import { useState, useRef } from "react"
 import { useCountUp } from "@/lib/hooks/useCountUp"
-import { motion } from "motion/react"
-import { Layers, Zap, ShieldCheck } from "lucide-react"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { motion, AnimatePresence } from "motion/react"
+import { Layers, Zap, ShieldCheck, MapPin, CheckCircle2, ArrowRight } from "lucide-react"
 
 const stats = [
-  { label: "YEARS EXP", value: 1 },
-  { label: "COMPANIES", value: 2 },
-  { label: "PROJECTS", value: 7 },
-  { label: "CGPA", value: 8.02 },
+  { label: "PROD PROJECTS", value: 10, suffix: "+" },
+  { label: "COMPANIES", value: 2, suffix: "" },
+  { label: "YEARS EXP", value: 1, suffix: "+" },
+  { label: "ACADEMIC CGPA", value: 8.02, suffix: " / 10", isDecimal: true },
 ]
 
 const corePillars = [
   {
+    id: "architecture",
     title: "Scalable Architecture",
     icon: Layers,
-    description: "Designing modular, maintainable full-stack systems with clean REST APIs and robust database schemas.",
+    summary: "Designing modular, maintainable full-stack systems with clean REST APIs and robust database schemas.",
+    details: "Specializing in multi-tiered architectures using React 19 frontends, Express/Node middleware, and normalized 13+ table MySQL relational models with transaction integrity locks.",
+    tags: ["RESTful APIs", "Relational Schemas", "JWT Auth", "Express Middleware"],
   },
   {
+    id: "performance",
     title: "Performance & UX",
     icon: Zap,
-    description: "Prioritizing fast page loads, fluid GSAP/Motion animations, and responsive cross-device layouts.",
+    summary: "Prioritizing sub-second page loads, fluid animations, and mobile-first responsive viewports.",
+    details: "Achieved +35% performance boosts at Ethiroli Pvt Ltd via asset compression, intelligent code-splitting, GSAP hardware-accelerated animations, and Tailwind CSS tree-shaking.",
+    tags: ["Lighthouse 95+", "Lazy Loading", "Tailwind CSS", "GSAP / Motion"],
   },
   {
+    id: "reliability",
     title: "Enterprise Reliability",
     icon: ShieldCheck,
-    description: "Integrating secure payment workflows, Salesforce Apex integrations, and automated deployment pipelines.",
+    summary: "Integrating battle-tested payment workflows, Salesforce integrations, and automated pipelines.",
+    details: "Delivered production payment systems with Razorpay webhook validations, cash-on-delivery safeguards, automated PDF invoice generators, and Salesforce Apex customer lifecycle automations.",
+    tags: ["Razorpay Webhooks", "Salesforce Apex", "PDF Engine", "CI/CD Deployment"],
   },
 ]
 
 export default function About() {
   const [activePillar, setActivePillar] = useState(0)
-  const sectionRef = useRef<HTMLDivElement>(null)
-
-  const handle3DTilt = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget
-    const rect = card.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const rx = ((y / rect.height) - 0.5) * -12
-    const ry = ((x / rect.width) - 0.5) * 12
-    card.style.transform = `perspective(1000px) rotateX(${rx}deg) rotateY(${ry}deg) scale3d(1.02, 1.02, 1.02)`
-    card.style.transition = "transform 0.1s ease, box-shadow 0.2s ease"
-    card.style.boxShadow = `0 15px 35px rgba(255, 62, 0, 0.15)`
-  }
-
-  const handle3DReset = (e: React.MouseEvent<HTMLDivElement>) => {
-    const card = e.currentTarget
-    card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
-    card.style.transition = "transform 0.5s ease, box-shadow 0.5s ease"
-    card.style.boxShadow = `none`
-  }
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger)
-
-    const ctx = gsap.context(() => {
-      // Header reveal
-      gsap.fromTo(
-        ".about-header",
-        { opacity: 0, y: 40 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 80%",
-          },
-        }
-      )
-
-      // Left Image Wrapper reveal
-      gsap.fromTo(
-        ".about-image-wrapper",
-        { opacity: 0, scale: 0.88, y: 30 },
-        {
-          opacity: 1,
-          scale: 1,
-          y: 0,
-          duration: 0.9,
-          ease: "back.out(1.2)",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 75%",
-          },
-        }
-      )
-
-      // Right Bio Text reveal
-      gsap.fromTo(
-        ".about-bio-text",
-        { opacity: 0, x: 30 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 70%",
-          },
-        }
-      )
-
-      // Staggered Core Pillars Cards
-      gsap.fromTo(
-        ".about-pillar-card",
-        { opacity: 0, y: 30, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.15,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".about-pillars-container",
-            start: "top 82%",
-          },
-        }
-      )
-
-      // Staggered Stats Cards
-      gsap.fromTo(
-        ".about-stat-card",
-        { opacity: 0, y: 25 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ".about-stats-container",
-            start: "top 85%",
-          },
-        }
-      )
-    }, sectionRef)
-
-    return () => ctx.revert()
-  }, [])
 
   return (
-    <section ref={sectionRef} id="about" style={{ padding: "clamp(4rem, 8vw, 7.5rem) 0", background: "rgba(255,255,255,0.01)" }}>
-      <div className="container" style={{ maxWidth: "1100px" }}>
+    <section id="about" className="py-20 md:py-32 relative bg-neutral-950/40 border-t border-white/5">
+      <div className="container max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Title */}
-        <div className="about-header" style={{ marginBottom: "60px" }}>
-          <span style={{ color: "var(--accent)", fontFamily: "var(--font-syne)", fontSize: "clamp(0.7rem, 2vw, 0.8rem)", textTransform: "uppercase", letterSpacing: "0.2em", fontWeight: 700 }}>
-            ABOUT ME
+        {/* Section Header */}
+        <div className="max-w-3xl mb-14 md:mb-20">
+          <span className="text-[#ff3e00] font-mono tracking-widest text-xs uppercase font-semibold block mb-3">
+            [ ABOUT THE DEVELOPER ]
           </span>
-          <h2
-            style={{
-              fontFamily: "var(--font-syne)",
-              fontSize: "clamp(2rem, 5vw, 3.8rem)",
-              marginTop: "8px",
-              lineHeight: 1.1,
-            }}
-          >
-            ENGINEERING VALUE & USER EXPERIENCES
+          <h2 className="text-3xl sm:text-5xl font-extrabold tracking-tight text-white leading-tight font-syne">
+            Engineering Value, Architecture & User Experience
           </h2>
+          <p className="text-neutral-400 mt-4 text-sm md:text-base leading-relaxed font-sans">
+            A developer who bridges user-focused interface craftsmanship with rigorous backend database reliability.
+          </p>
         </div>
 
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-            gap: "clamp(2rem, 5vw, 3.5rem)",
-            alignItems: "center",
-          }}
-        >
-          <div className="about-image-wrapper" style={{ textAlign: "center", position: "relative" }}>
-            <div
-              style={{ display: "inline-block" }}
-            >
-              <div
-                onMouseMove={handle3DTilt}
-                onMouseLeave={handle3DReset}
-                style={{
-                  position: "relative",
-                  borderRadius: "24px",
-                  padding: "8px",
-                  background: "linear-gradient(135deg, rgba(255,62,0,0.3) 0%, rgba(255,255,255,0.05) 50%, rgba(212,175,55,0.2) 100%)",
-                  boxShadow: "0 20px 50px rgba(0,0,0,0.6), 0 0 30px rgba(255, 62, 0, 0.15)",
-                }}
-              >
-                <div style={{ borderRadius: "18px", overflow: "hidden", position: "relative", width: "clamp(240px, 70vw, 300px)", height: "clamp(280px, 80vw, 360px)" }}>
+        {/* 2-Column Grid: Image Card + Bio & Interactive Pillars */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+          
+          {/* Left Column: Profile Card */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-start">
+            <div className="relative group w-full max-w-[360px]">
+              
+              {/* Outer Accent Glow */}
+              <div className="absolute -inset-1 bg-gradient-to-tr from-[#ff3e00]/30 via-amber-500/10 to-transparent rounded-3xl blur-xl opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative rounded-2xl overflow-hidden bg-neutral-900 border border-white/10 shadow-2xl">
+                {/* Profile Image */}
+                <div className="relative aspect-[4/5] w-full overflow-hidden bg-neutral-950">
                   <img
                     src="/jeevan.jpg"
-                    alt="JEEVANANTHAN V - Full Stack Software Engineer"
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                      objectPosition: "center 20%",
-                      filter: "contrast(1.05) brightness(0.98)",
-                      display: "block",
-                    }}
+                    alt="Jeevananthan V - Full Stack Software Developer"
+                    className="w-full h-full object-cover object-top filter contrast-[1.05] brightness-95 group-hover:scale-105 transition-transform duration-700"
                   />
-                  {/* Subtle Dark Vignette Gradient */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      inset: 0,
-                      background: "linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 40%, rgba(14,14,14,0.85) 100%)",
-                      pointerEvents: "none",
-                    }}
-                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent opacity-80" />
+
                   {/* Location Tag */}
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "12px",
-                      left: "12px",
-                      background: "rgba(14, 14, 14, 0.85)",
-                      backdropFilter: "blur(8px)",
-                      border: "1px solid rgba(255,255,255,0.15)",
-                      borderRadius: "999px",
-                      padding: "4px 12px",
-                      fontSize: "clamp(0.6rem, 1.8vw, 0.72rem)",
-                      fontWeight: 600,
-                      color: "#eee",
-                      fontFamily: "var(--font-inter)",
-                      letterSpacing: "0.05em",
-                    }}
-                  >
-                    📍 SALEM, TN, INDIA
+                  <div className="absolute top-3.5 left-3.5 bg-black/75 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 text-[11px] font-mono text-neutral-200">
+                    <MapPin size={12} className="text-[#ff3e00]" />
+                    <span>SALEM, TAMIL NADU</span>
+                  </div>
+
+                  {/* Bottom Image Overlay Badge */}
+                  <div className="absolute bottom-4 left-4 right-4 bg-neutral-950/85 backdrop-blur-md border border-white/10 rounded-xl p-3 flex items-center justify-between">
+                    <div>
+                      <div className="text-white font-bold font-syne text-sm">Jeevananthan V</div>
+                      <div className="text-neutral-400 text-[11px] font-mono">Full Stack Engineer</div>
+                    </div>
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse" />
                   </div>
                 </div>
 
-                {/* Floating Role Badge */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: "-14px",
-                    right: "-14px",
-                    background: "var(--accent)",
-                    color: "#0e0e0e",
-                    padding: "clamp(0.5rem, 1.5vw, 0.5rem) clamp(1rem, 2.5vw, 1.125rem)",
-                    borderRadius: "10px",
-                    fontFamily: "var(--font-syne)",
-                    fontWeight: 800,
-                    fontSize: "clamp(0.65rem, 1.8vw, 0.8rem)",
-                    letterSpacing: "0.05em",
-                    boxShadow: "0 10px 25px rgba(255, 62, 0, 0.4)",
-                  }}
-                >
-                  FULL STACK DEVELOPER
+                {/* Quick Info Strip Below Image */}
+                <div className="p-4 grid grid-cols-2 gap-3 border-t border-white/5 bg-neutral-950/60 text-xs">
+                  <div>
+                    <span className="text-[10px] text-neutral-500 uppercase font-mono block">Current Role</span>
+                    <span className="font-semibold text-neutral-200 text-xs mt-0.5 block truncate">Web Developer</span>
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-neutral-500 uppercase font-mono block">Organization</span>
+                    <span className="font-semibold text-neutral-200 text-xs mt-0.5 block truncate">Ethiroli Pvt Ltd</span>
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
 
-          {/* Right Column: Bio & Core Engineering Pillars */}
-          <div>
-            <p
-              className="about-bio-text"
-              style={{
-                fontSize: "clamp(1rem, 2vw, 1.05rem)",
-                fontWeight: 300,
-                color: "#ccc",
-                lineHeight: 1.8,
-                marginBottom: "32px",
-              }}
-            >
-              I&apos;m a Full Stack Developer based in Salem, Tamil Nadu, specializing in modern web architecture, interactive user interfaces, and robust backend integrations. With professional experience across Ethiroli Pvt Ltd and Jayalakshmi Groups, I bring full-lifecycle expertise spanning React 19, Node.js, Express, MySQL, and Salesforce Apex.
-            </p>
+          {/* Right Column: Bio Narrative & Interactive Pillars */}
+          <div className="lg:col-span-7 flex flex-col justify-between">
+            
+            {/* Bio Narrative */}
+            <div className="space-y-4 text-neutral-300 text-sm sm:text-base leading-relaxed font-sans">
+              <p>
+                I am a Full Stack Developer based in <span className="text-white font-semibold">Salem, Tamil Nadu</span>, 
+                holding a Bachelor of Engineering in Computer Science with an <span className="text-[#ff3e00] font-semibold">8.02 CGPA</span> from K.S. Rangasamy College of Technology.
+              </p>
+              <p className="text-neutral-400 text-xs sm:text-sm">
+                Over the past year, I have engineered production solutions at <span className="text-neutral-200 font-medium">Ethiroli Pvt Ltd</span> and corporate platforms at <span className="text-neutral-200 font-medium">Jayalakshmi Groups</span>, while architecting independent production platforms including temple ticketing systems with 13-table MySQL schemas, high-throughput marathon registries, and Indian heritage e-commerce portals.
+              </p>
+            </div>
 
-            {/* Core Philosophy Pillar Selector */}
-            <div className="about-pillars-container" style={{ marginBottom: "36px" }}>
-              <div style={{ fontSize: "clamp(0.65rem, 1.8vw, 0.75rem)", color: "#888", textTransform: "uppercase", letterSpacing: "0.15em", marginBottom: "12px", fontFamily: "var(--font-syne)", fontWeight: 700 }}>
-                Core Engineering Pillars:
+            {/* Interactive Engineering Pillars */}
+            <div className="mt-8">
+              <div className="text-[11px] text-neutral-500 uppercase tracking-widest font-mono font-semibold mb-3">
+                Core Engineering Pillars (Click to explore):
               </div>
-              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "12px" }}>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                 {corePillars.map((pillar, idx) => {
                   const Icon = pillar.icon
                   const isActive = activePillar === idx
                   return (
-                    <motion.div
-                      key={pillar.title}
-                      className="about-pillar-card"
+                    <button
+                      key={pillar.id}
                       onClick={() => setActivePillar(idx)}
-                      onMouseMove={handle3DTilt}
-                      onMouseLeave={handle3DReset}
-                      whileTap={{ scale: 0.98 }}
-                      style={{
-                        padding: "16px",
-                        background: isActive ? "rgba(255, 62, 0, 0.12)" : "rgba(255,255,255,0.03)",
-                        border: isActive ? "1px solid var(--accent)" : "1px solid rgba(255,255,255,0.08)",
-                        borderRadius: "12px",
-                        cursor: "pointer",
-                        transition: "all 0.2s ease",
-                      }}
+                      className={`text-left p-3.5 rounded-xl border transition-all duration-200 cursor-pointer ${
+                        isActive
+                          ? "bg-[#ff3e00]/10 border-[#ff3e00] text-white shadow-md shadow-[#ff3e00]/10"
+                          : "bg-neutral-900/40 border-white/5 text-neutral-400 hover:text-white hover:bg-neutral-900/80 hover:border-white/10"
+                      }`}
                     >
-                      <div style={{ display: "flex", alignItems: "center", gap: "8px", color: isActive ? "var(--accent)" : "#fff", fontWeight: 700, fontSize: "clamp(0.75rem, 2vw, 0.9rem)", marginBottom: "6px" }}>
-                        <Icon size={18} /> {pillar.title}
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <Icon size={16} className={isActive ? "text-[#ff3e00]" : "text-neutral-400"} />
+                        <span className="font-syne font-bold text-xs sm:text-sm text-white truncate">
+                          {pillar.title}
+                        </span>
                       </div>
-                      <p style={{ fontSize: "clamp(0.7rem, 1.8vw, 0.8rem)", color: "#aaa", lineHeight: 1.5, margin: 0 }}>
-                        {pillar.description}
+                      <p className="text-[11px] text-neutral-400 line-clamp-2 leading-tight">
+                        {pillar.summary}
                       </p>
-                    </motion.div>
+                    </button>
                   )
                 })}
               </div>
+
+              {/* Active Pillar Expanded Details Card */}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={corePillars[activePillar].id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.25 }}
+                  className="mt-3.5 p-4 rounded-xl bg-neutral-900/80 border border-white/10 text-xs text-neutral-300 leading-relaxed font-sans"
+                >
+                  <p className="text-neutral-300 text-xs sm:text-sm">
+                    {corePillars[activePillar].details}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mt-3 pt-3 border-t border-white/5">
+                    {corePillars[activePillar].tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-0.5 rounded bg-white/5 text-neutral-300 text-[10px] font-mono border border-white/5"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
 
-            {/* Stats Grid with Count Up */}
-            <div
-              className="about-stats-container"
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(110px, 1fr))",
-                gap: "16px",
-              }}
-            >
+            {/* Key Statistics Grid */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-8 pt-6 border-t border-white/10">
               {stats.map((stat) => (
-                <motion.div
+                <div
                   key={stat.label}
-                  className="about-stat-card"
-                  onMouseMove={handle3DTilt}
-                  onMouseLeave={handle3DReset}
-                  style={{
-                    padding: "16px",
-                    background: "rgba(255,255,255,0.03)",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    borderTop: "2px solid var(--accent)",
-                    borderRadius: "10px",
-                    transition: "all 0.3s ease",
-                  }}
+                  className="p-3.5 rounded-xl bg-neutral-900/50 border border-white/5"
                 >
-                  <StatCount target={stat.value} label={stat.label} />
-                </motion.div>
+                  <StatDisplay
+                    target={stat.value}
+                    suffix={stat.suffix}
+                    isDecimal={stat.isDecimal}
+                  />
+                  <div className="text-[10px] text-neutral-500 font-mono uppercase tracking-wider mt-1">
+                    {stat.label}
+                  </div>
+                </div>
               ))}
             </div>
 
           </div>
+
         </div>
+
       </div>
     </section>
   )
 }
 
-function StatCount({ target, label }: { target: number; label: string }) {
+function StatDisplay({
+  target,
+  suffix,
+  isDecimal,
+}: {
+  target: number
+  suffix: string
+  isDecimal?: boolean
+}) {
   const [count, ref] = useCountUp(target, 1200)
 
   return (
-    <div ref={ref as React.RefObject<HTMLDivElement>}>
-      <span style={{ fontFamily: "var(--font-syne)", fontSize: "2rem", fontWeight: 800, color: "#fff" }}>
-        {count}{target < 10 ? "+" : ""}
-      </span>
-      <p
-        style={{
-          fontSize: "0.65rem",
-          textTransform: "uppercase",
-          letterSpacing: "0.1em",
-          color: "#888",
-          marginTop: "4px",
-        }}
-      >
-        {label}
-      </p>
+    <div ref={ref as React.RefObject<HTMLDivElement>} className="font-syne font-extrabold text-2xl text-white">
+      {isDecimal ? count.toFixed(2) : count}
+      <span className="text-[#ff3e00] text-sm ml-0.5">{suffix}</span>
     </div>
   )
 }
-
