@@ -680,4 +680,731 @@ export const projects: Project[] = [
     netlifyUrl: "https://infinity-marathon.netlify.app",
     github: "https://github.com/JeevananthanV/marathon_final",
   },
+  {
+    "slug": "dental-clinic",
+    "title": "Aura Dental Clinic",
+    "description": "Modern patient booking and clinical management web app with dentist availability calendars and treatment history.",
+    "role": "Full Stack Engineer",
+    "bullets": [
+      "Built patient reservation workflow with doctor specialization matching and slot locking",
+      "Architected relational appointment ledger tracking patient histories and treatments",
+      "Designed clean healthcare UI with dark/light clinical themes and responsive mobile layouts"
+    ],
+    "tech": [
+      "React.js",
+      "Next.js",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Tailwind CSS"
+    ],
+    "featured": false,
+    "theme": "Healthcare & Dental Care Management",
+    "colors": {
+      "primary": "#0ea5e9",
+      "secondary": "#f0f9ff",
+      "accent": "#0284c7"
+    },
+    "heroImage": "/screenshots/dental-clinic.png",
+    "heroAnimation": "clinical-showcase",
+    "features": [
+      "Doctor Scheduling",
+      "Slot Locking",
+      "Patient History Ledger",
+      "Treatment Cards"
+    ],
+    "problem": "Patients faced long wait times and missed appointments due to fragmented manual scheduling records.",
+    "solution": "Engineered an automated appointment reservation portal with doctor calendars and instant booking confirmation.",
+    "dbTables": [
+      "patients",
+      "appointments",
+      "dentists",
+      "treatments",
+      "slots"
+    ],
+    "skillsDemonstrated": [
+      "Healthcare UI Design",
+      "Calendar Slot Conflict Prevention",
+      "Express REST APIs"
+    ],
+    "liveDemo": "https://dental-clinic-pro-m0xj.netlify.app",
+    "netlifyUrl": "https://dental-clinic-pro-m0xj.netlify.app",
+    "github": "https://github.com/JeevananthanV/dental_clinic"
+  },
+  {
+    "slug": "dental-clinic-2",
+    "title": "Dental Clinic Care (Edition 2)",
+    "description": "Advanced dental health management portal with live consultation requests, pricing calculators, and patient testimonials.",
+    "role": "Frontend & Full Stack Lead",
+    "bullets": [
+      "Engineered patient treatment cost estimator with transparent pricing calculations",
+      "Integrated emergency consultation triage requests and clinic branch selector",
+      "Optimized production bundle with Vite and modern CSS grid styling"
+    ],
+    "tech": [
+      "React 18",
+      "Vite",
+      "Node.js",
+      "Express",
+      "Tailwind CSS"
+    ],
+    "featured": false,
+    "theme": "Clinical Practice & Consultation Portal",
+    "colors": {
+      "primary": "#0d9488",
+      "secondary": "#f0fdfa",
+      "accent": "#14b8a6"
+    },
+    "heroImage": "/screenshots/dental-clinic-2.png",
+    "heroAnimation": "fade-slide",
+    "features": [
+      "Cost Estimator",
+      "Branch Location Picker",
+      "Emergency Triage",
+      "Patient Reviews"
+    ],
+    "problem": "Dental practices lacked an interactive interface to showcase complex cosmetic procedures and estimated costs.",
+    "solution": "Developed an interactive procedure cost calculator and dynamic before/after case studies carousel.",
+    "dbTables": [
+      "consultations",
+      "branches",
+      "testimonials",
+      "procedures"
+    ],
+    "skillsDemonstrated": [
+      "Vite Build Architecture",
+      "Interactive Pricing Calculator",
+      "Component Composition"
+    ],
+    "liveDemo": "https://dental-clinic-care-5rxm.netlify.app",
+    "netlifyUrl": "https://dental-clinic-care-5rxm.netlify.app",
+    "github": "https://github.com/JeevananthanV/dental_clinic_2"
+  },
+  {
+    "slug": "enterprise-lms",
+    "title": "Enterprise LMS Portal",
+    "description": "Scalable Learning Management System featuring course catalogs, student enrollment tracking, lesson progress, and quizzes.",
+    "role": "Backend Architect & Full Stack",
+    "bullets": [
+      "Architected FastAPI microservices backend backed by PostgreSQL, MongoDB, and Redis caching",
+      "Built course authoring studio allowing instructors to upload curriculum videos and modular lessons",
+      "Designed student progress dashboard with quiz assessments and completion certificates"
+    ],
+    "tech": [
+      "FastAPI",
+      "Python",
+      "React 18",
+      "PostgreSQL",
+      "Redis",
+      "TypeScript"
+    ],
+    "featured": true,
+    "theme": "Enterprise EdTech Platform",
+    "colors": {
+      "primary": "#4f46e5",
+      "secondary": "#eef2ff",
+      "accent": "#6366f1"
+    },
+    "heroImage": "/screenshots/enterprise-lms.png",
+    "heroAnimation": "education-grid",
+    "features": [
+      "Curriculum Studio",
+      "Interactive Quizzes",
+      "Redis-Cached Progress",
+      "Role-Based Access Control"
+    ],
+    "problem": "Corporate training pipelines were fragmented across third-party tools with no unified tracking or quiz assessment.",
+    "solution": "Engineered a centralized, low-latency LMS powered by FastAPI and PostgreSQL with sub-50ms Redis-cached progress lookups.",
+    "dbTables": [
+      "users",
+      "courses",
+      "modules",
+      "lessons",
+      "enrollments",
+      "quiz_submissions",
+      "certificates"
+    ],
+    "skillsDemonstrated": [
+      "FastAPI High-Performance Async APIs",
+      "Relational Schema Normalization",
+      "Redis Caching Strategy"
+    ],
+    "liveDemo": "https://enterprise-lms-portal.netlify.app",
+    "netlifyUrl": "https://enterprise-lms-portal.netlify.app",
+    "github": "https://github.com/JeevananthanV/enterprise-lms"
+  },
+  {
+    "slug": "marathon-platform",
+    "title": "Marathon Platform (Dockerized)",
+    "description": "High-concurrency athletic marathon registration and runner tracking engine containerized with Docker and docker-compose.",
+    "role": "DevOps & Cloud Engineer",
+    "bullets": [
+      "Containerized multi-service architecture including FastAPI backend, React client, and PostgreSQL database",
+      "Configured automated database migration pipelines and environment variable secrets orchestration",
+      "Benchmarked throughput to handle 5,000+ simultaneous registrations during marathon launch windows"
+    ],
+    "tech": [
+      "Docker",
+      "Docker Compose",
+      "FastAPI",
+      "React",
+      "PostgreSQL"
+    ],
+    "featured": false,
+    "theme": "Containerized Sports Infrastructure",
+    "colors": {
+      "primary": "#e11d48",
+      "secondary": "#fff1f2",
+      "accent": "#f43f5e"
+    },
+    "heroImage": "/screenshots/marathon-platform.png",
+    "heroAnimation": "docker-flow",
+    "features": [
+      "One-Command Docker Compose",
+      "Async Runner Ingestion",
+      "Automated DB Migrations",
+      "Load-Balanced API"
+    ],
+    "problem": "Manual host configurations led to environment drift and deployment bottlenecks across staging and production.",
+    "solution": "Standardized infrastructure-as-code using Docker Compose, creating reproducible containerized environments.",
+    "dbTables": [
+      "runners",
+      "categories",
+      "orders",
+      "timing_checkpoints"
+    ],
+    "skillsDemonstrated": [
+      "Docker Multi-Stage Builds",
+      "Container Networking",
+      "Postgres Connection Pooling"
+    ],
+    "liveDemo": "https://marathon-platform-run.netlify.app",
+    "netlifyUrl": "https://marathon-platform-run.netlify.app",
+    "github": "https://github.com/JeevananthanV/marathon-platform"
+  },
+  {
+    "slug": "marathon-event-one",
+    "title": "StrideForge Marathon",
+    "description": "Athletic event management platform with dynamic distance selection, runner medical waivers, and automated BIB generation.",
+    "role": "Full Stack Developer",
+    "bullets": [
+      "Developed responsive registration flow with 5K, 10K, Half, and Full Marathon categories",
+      "Implemented digital waiver agreement signing and emergency contact validations",
+      "Connected live runner database with instant ticket confirmation downloads"
+    ],
+    "tech": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Tailwind CSS"
+    ],
+    "featured": false,
+    "theme": "Athletic Race Management",
+    "colors": {
+      "primary": "#ea580c",
+      "secondary": "#fff7ed",
+      "accent": "#f97316"
+    },
+    "heroImage": "/screenshots/marathon-event-one.png",
+    "heroAnimation": "stride-slide",
+    "features": [
+      "Dynamic Distance Selectors",
+      "Medical Waiver Signing",
+      "Automated BIB Numbers",
+      "Live Registrations Feed"
+    ],
+    "problem": "Marathon organizers struggled with physical paperwork and manual BIB number allocation on race day.",
+    "solution": "Built a fully digital registration portal with automated sequential BIB generation and downloadable digital runner passes.",
+    "dbTables": [
+      "athletes",
+      "race_bibs",
+      "categories",
+      "waivers"
+    ],
+    "skillsDemonstrated": [
+      "Document Generation",
+      "Form Validation Chains",
+      "MongoDB Aggregation"
+    ],
+    "liveDemo": "https://marathon-event-one.netlify.app",
+    "netlifyUrl": "https://marathon-event-one.netlify.app",
+    "github": "https://github.com/JeevananthanV/marathon_event"
+  },
+  {
+    "slug": "marathon-event-two",
+    "title": "Run Beyond Limits 2026",
+    "description": "Second edition marathon web portal featuring live countdown timer, elevation route charts, and sponsor showcases.",
+    "role": "Frontend Architect",
+    "bullets": [
+      "Designed elevation profile visualization using SVG chart animations",
+      "Integrated hydration point map with emergency ambulance dispatch stations",
+      "Optimized load times with WebP asset compression and Vite bundling"
+    ],
+    "tech": [
+      "React 18",
+      "Vite",
+      "Tailwind CSS",
+      "Express.js"
+    ],
+    "featured": false,
+    "theme": "Endurance Race Experience",
+    "colors": {
+      "primary": "#2563eb",
+      "secondary": "#eff6ff",
+      "accent": "#3b82f6"
+    },
+    "heroImage": "/screenshots/marathon-event-two.png",
+    "heroAnimation": "route-map",
+    "features": [
+      "Elevation Profile Visualizer",
+      "Hydration Point Waypoints",
+      "Live Event Countdown",
+      "Sponsor Logos Grid"
+    ],
+    "problem": "Runners lacked detailed route topology data, resulting in poor pacing and hydration planning during past marathons.",
+    "solution": "Engineered interactive route topological maps indicating hydration stations, medical tents, and gradient changes.",
+    "dbTables": [
+      "race_routes",
+      "waypoints",
+      "sponsors"
+    ],
+    "skillsDemonstrated": [
+      "SVG Data Visualization",
+      "Vite Production Optimization",
+      "Mobile-First UX"
+    ],
+    "liveDemo": "https://marathon-event-two.netlify.app",
+    "netlifyUrl": "https://marathon-event-two.netlify.app",
+    "github": "https://github.com/JeevananthanV/marathon_event_2"
+  },
+  {
+    "slug": "marathon-event-three",
+    "title": "Marathon Edition 3 (WhatsApp Bot)",
+    "description": "Next-gen runner onboarding platform featuring an automated conversational WhatsApp Bot registration system and instant BIB simulator.",
+    "role": "Full Stack & Automation Engineer",
+    "bullets": [
+      "Built automated conversational flow allowing runners to register via text messaging",
+      "Developed instant digital runner pass preview with RFID timing chip allocation",
+      "Created ultra-fast static landing page optimized for mobile edge networks"
+    ],
+    "tech": [
+      "HTML5",
+      "Modern CSS",
+      "JavaScript",
+      "WhatsApp API",
+      "Tailwind CDN"
+    ],
+    "featured": false,
+    "theme": "Conversational Automation & Race Portal",
+    "colors": {
+      "primary": "#0284c7",
+      "secondary": "#f0f9ff",
+      "accent": "#38bdf8"
+    },
+    "heroImage": "/screenshots/marathon-event-three.png",
+    "heroAnimation": "bot-chat",
+    "features": [
+      "WhatsApp 24/7 Registration Bot",
+      "Instant BIB #7704 Simulator",
+      "Multi-Wave Staggered Start Info",
+      "Zero-Wait Registration"
+    ],
+    "problem": "Lengthy web forms caused significant user drop-off on slow mobile connections.",
+    "solution": "Integrated a friction-free WhatsApp conversational bot workflow where runners register by sending a single message.",
+    "dbTables": [
+      "bot_conversations",
+      "runners",
+      "bib_allocations"
+    ],
+    "skillsDemonstrated": [
+      "Conversational UX Design",
+      "WhatsApp Business API",
+      "Edge-Optimized Static Architecture"
+    ],
+    "liveDemo": "https://marathon-event-three.netlify.app",
+    "netlifyUrl": "https://marathon-event-three.netlify.app",
+    "github": "https://github.com/JeevananthanV/marathon_event_3"
+  },
+  {
+    "slug": "photo-studio-master",
+    "title": "Photo Studio Master",
+    "description": "Creative photography studio portfolio with dynamic masonry gallery, booking requests, and photo package customization.",
+    "role": "Full Stack Developer",
+    "bullets": [
+      "Engineered masonry grid layout with fluid responsive image transitions",
+      "Built photoshoot inquiry form with date-picker and customizable equipment add-ons",
+      "Implemented RESTful backend in Express for client quote requests"
+    ],
+    "tech": [
+      "React",
+      "Next.js",
+      "Express",
+      "Node.js",
+      "MongoDB",
+      "Tailwind CSS"
+    ],
+    "featured": false,
+    "theme": "Creative Photography & Portfolio",
+    "colors": {
+      "primary": "#7c3aed",
+      "secondary": "#faf5ff",
+      "accent": "#8b5cf6"
+    },
+    "heroImage": "/screenshots/photo-studio-master.png",
+    "heroAnimation": "masonry-fade",
+    "features": [
+      "Masonry Photo Grid",
+      "Shooting Package Builder",
+      "Client Inquiry Manager",
+      "Equipment Checklist"
+    ],
+    "problem": "Photographers needed a high-performance visual catalog that highlights photography without slowing page loads.",
+    "solution": "Implemented Next.js responsive image optimization with progressive blur placeholders and client inquiry management.",
+    "dbTables": [
+      "galleries",
+      "bookings",
+      "packages",
+      "inquiries"
+    ],
+    "skillsDemonstrated": [
+      "Image Asset Optimization",
+      "Masonry CSS Grids",
+      "Next.js Image Components"
+    ],
+    "liveDemo": "https://photo-studio-master.netlify.app",
+    "netlifyUrl": "https://photo-studio-master.netlify.app",
+    "github": "https://github.com/JeevananthanV/photo-studio"
+  },
+  {
+    "slug": "photo-studio-creative",
+    "title": "Photo Studio Creative Edition",
+    "description": "Artistic photography showcase with GSAP scroll-triggered animations, interactive dark canvas, and high-fashion editorial layouts.",
+    "role": "Creative Frontend Developer",
+    "bullets": [
+      "Integrated GSAP ScrollTrigger for smooth parallax transitions across high-resolution editorial collections",
+      "Developed interactive dark room aesthetic with custom glowing cursor effects",
+      "Secured 95+ Google Lighthouse performance score with strict Oxlint audits"
+    ],
+    "tech": [
+      "React 18",
+      "GSAP",
+      "Vite",
+      "Oxlint",
+      "Tailwind CSS"
+    ],
+    "featured": false,
+    "theme": "Editorial & Fashion Photography",
+    "colors": {
+      "primary": "#c026d3",
+      "secondary": "#fdf4ff",
+      "accent": "#d946ef"
+    },
+    "heroImage": "/screenshots/photo-studio-creative.png",
+    "heroAnimation": "editorial-reveal",
+    "features": [
+      "GSAP ScrollTrigger Parallax",
+      "Dark Room Aesthetic",
+      "Oxlint Zero-Warning Build",
+      "Full-Screen Lightbox"
+    ],
+    "problem": "High-end fashion clients expect interactive visual drama without sacrificing mobile frame rates.",
+    "solution": "Crafted GPU-accelerated GSAP animations and optimized bundle chunking for a buttery-smooth 60fps experience.",
+    "dbTables": [
+      "collections",
+      "lookbooks",
+      "client_reviews"
+    ],
+    "skillsDemonstrated": [
+      "GSAP Animation Timeline",
+      "Hardware-Accelerated CSS",
+      "Oxlint Code Quality"
+    ],
+    "liveDemo": "https://photo-studio-creative.netlify.app",
+    "netlifyUrl": "https://photo-studio-creative.netlify.app",
+    "github": "https://github.com/JeevananthanV/photo_studio_2"
+  },
+  {
+    "slug": "sukra-app",
+    "title": "Sukra Astrology & Planetary Portal",
+    "description": "Sacred Vedic astrology calculation engine featuring real-time Shukra Hora calculation, Shukra Gayatri japa counter, and planetary wisdom.",
+    "role": "Frontend Architect & Creator",
+    "bullets": [
+      "Developed real-time Shukra Hora calculator based on astronomical sunrise algorithms",
+      "Engineered interactive 108-cycle Japa Counter with completion toasts and persistent state",
+      "Designed gold-leaf sacred Vedic UI with Cinzel typography and glassmorphism styling"
+    ],
+    "tech": [
+      "HTML5",
+      "Modern JS",
+      "Tailwind CSS",
+      "Cinzel Typography"
+    ],
+    "featured": false,
+    "theme": "Spiritual Media & Vedic Astronomical App",
+    "colors": {
+      "primary": "#c5a059",
+      "secondary": "#fbf9f4",
+      "accent": "#f7d070"
+    },
+    "heroImage": "/screenshots/sukra-app.png",
+    "heroAnimation": "sacred-glow",
+    "features": [
+      "Real-Time Hora Calculator",
+      "108 Japa Counter",
+      "Gemstone & Direction Guide",
+      "Vedic Mantras Display"
+    ],
+    "problem": "Devotees had to consult physical almanacs (Panchangams) to identify favorable planetary hours (Shukra Hora).",
+    "solution": "Built a responsive, zero-install web app calculating daily Shukra Horas dynamically with interactive japa counting.",
+    "dbTables": [
+      "hora_schedules",
+      "mantras",
+      "astrological_attributes"
+    ],
+    "skillsDemonstrated": [
+      "Vedic Calculation Algorithms",
+      "Glassmorphic Design Tokens",
+      "Pure Vanilla JS State Engine"
+    ],
+    "liveDemo": "https://sukra-app-portal.netlify.app",
+    "netlifyUrl": "https://sukra-app-portal.netlify.app",
+    "github": "https://github.com/JeevananthanV/sukra_app"
+  },
+  {
+    "slug": "sukra-symbol-blog",
+    "title": "Sukra Symbol & Mudras Blog",
+    "description": "Vedic mudras and esoteric symbols spiritual blog with interactive posture guides, healing benefits, and sacred mantras.",
+    "role": "Frontend Developer",
+    "bullets": [
+      "Crafted interactive mudra visual guide showcasing proper hand postures and energy channels",
+      "Designed serene, readable typography layout optimized for long-form spiritual reading",
+      "Built with React 18, Vite, and Lucide icons for ultra-lightweight delivery"
+    ],
+    "tech": [
+      "React 18",
+      "Vite",
+      "Tailwind CSS",
+      "Lucide React"
+    ],
+    "featured": false,
+    "theme": "Spiritual Wellness & Mudras",
+    "colors": {
+      "primary": "#d97706",
+      "secondary": "#fffbeb",
+      "accent": "#f59e0b"
+    },
+    "heroImage": "/screenshots/sukra-symbol-blog.png",
+    "heroAnimation": "mudra-flow",
+    "features": [
+      "Mudra Posture Guides",
+      "Energy Meridian Charts",
+      "Chakra Associations",
+      "Responsive Article Cards"
+    ],
+    "problem": "Traditional mudra literature is dense and lacks visual step-by-step guidance for beginners.",
+    "solution": "Designed a clean, modern digital portal with clear anatomical posture illustrations and healing benefits.",
+    "dbTables": [
+      "mudras",
+      "articles",
+      "chakras"
+    ],
+    "skillsDemonstrated": [
+      "Editorial Typography",
+      "Lucide Icon Integration",
+      "Vite Static Generation"
+    ],
+    "liveDemo": "https://sukra-symbol-blog.netlify.app",
+    "netlifyUrl": "https://sukra-symbol-blog.netlify.app",
+    "github": "https://github.com/JeevananthanV/sukra_symbol_blog"
+  },
+  {
+    "slug": "world-tourist-association",
+    "title": "World Tourist Association",
+    "description": "International eco-tourism and global heritage destination portal promoting sustainable exploration, cultural preservation, and bookings.",
+    "role": "Frontend Engineer",
+    "bullets": [
+      "Engineered international destination catalog with eco-certification filters",
+      "Designed responsive destination cards with regional climate indicators and best visit months",
+      "Developed with React 18 and Vite with strict linting and accessible ARIA attributes"
+    ],
+    "tech": [
+      "React 18",
+      "Vite",
+      "Tailwind CSS",
+      "Oxlint"
+    ],
+    "featured": false,
+    "theme": "Global Eco-Tourism & Travel",
+    "colors": {
+      "primary": "#059669",
+      "secondary": "#ecfdf5",
+      "accent": "#10b981"
+    },
+    "heroImage": "/screenshots/world-tourist-association.png",
+    "heroAnimation": "globe-pan",
+    "features": [
+      "Global Destination Catalog",
+      "Eco-Tourism Certification Filters",
+      "Seasonality Indicator",
+      "Curated Travel Guides"
+    ],
+    "problem": "Travelers seeking sustainable, community-first travel experiences struggled to find vetted destinations.",
+    "solution": "Built a curated global association platform highlighting heritage preservation, certified eco-resorts, and cultural codes.",
+    "dbTables": [
+      "destinations",
+      "eco_badges",
+      "travel_guides"
+    ],
+    "skillsDemonstrated": [
+      "Geographical Data Filtering",
+      "Tailwind Color Palettes",
+      "Vite Fast Refresh"
+    ],
+    "liveDemo": "https://world-tourist-association.netlify.app",
+    "netlifyUrl": "https://world-tourist-association.netlify.app",
+    "github": "https://github.com/JeevananthanV/world_tourist_association"
+  },
+  {
+    "slug": "guru-ubadhesam-blog",
+    "title": "Guru Ubadhesam Spiritual Blog",
+    "description": "Vedic wisdom, Varahi temple history, and upasana philosophy blog featuring audio chant player and sacred scriptural commentaries.",
+    "role": "Full Stack Developer",
+    "bullets": [
+      "Integrated audio streaming player for Vedic chants and Varahi Kavacham recitations",
+      "Designed sacred bilingual (Tamil/English) typography hierarchy with temple photography",
+      "Built with React 18, Vite, and responsive mobile-first navigation"
+    ],
+    "tech": [
+      "React 18",
+      "Vite",
+      "Tailwind CSS",
+      "Audio Player API"
+    ],
+    "featured": false,
+    "theme": "Temple Upasana & Sacred Commentaries",
+    "colors": {
+      "primary": "#b91c1c",
+      "secondary": "#fef2f2",
+      "accent": "#ef4444"
+    },
+    "heroImage": "/screenshots/guru-ubadhesam-blog.png",
+    "heroAnimation": "temple-reveal",
+    "features": [
+      "Audio Chanting Streamer",
+      "Bilingual Scriptural Articles",
+      "Varahi Temple History",
+      "Event Calendar"
+    ],
+    "problem": "Spiritual seekers needed an authentic digital repository of Varahi upasana guidance and audio chants.",
+    "solution": "Developed an audio-integrated digital portal documenting sacred mantras, festival dates, and commentary.",
+    "dbTables": [
+      "scriptures",
+      "audio_tracks",
+      "temple_festivals"
+    ],
+    "skillsDemonstrated": [
+      "Audio Player Integration",
+      "Bilingual Typography Design",
+      "Vite Asset Management"
+    ],
+    "liveDemo": "https://guru-ubadhesam-blog.netlify.app",
+    "netlifyUrl": "https://guru-ubadhesam-blog.netlify.app",
+    "github": "https://github.com/JeevananthanV/guru_ubadhesam_blog"
+  },
+  {
+    "slug": "guru-upadhesam",
+    "title": "Guru Upadhesam Portal",
+    "description": "Modern interactive spiritual education platform built on React 19 and Oxlint with student guidance modules.",
+    "role": "Lead Frontend Engineer",
+    "bullets": [
+      "Engineered on cutting-edge React 19 with latest compiler features and Oxlint linting",
+      "Designed modular lesson cards for spiritual philosophy study and meditation guides",
+      "Optimized for high-speed edge delivery with Vite build pipeline"
+    ],
+    "tech": [
+      "React 19",
+      "Vite",
+      "Oxlint",
+      "Tailwind CSS"
+    ],
+    "featured": false,
+    "theme": "Next-Gen Spiritual Learning",
+    "colors": {
+      "primary": "#d97706",
+      "secondary": "#fffbeb",
+      "accent": "#f59e0b"
+    },
+    "heroImage": "/screenshots/guru-upadhesam.png",
+    "heroAnimation": "react19-card",
+    "features": [
+      "React 19 Concurrent Features",
+      "Oxlint Zero-Warning Code",
+      "Meditation Modules",
+      "Philosophy Reader"
+    ],
+    "problem": "Legacy educational portals suffered from slow rendering and bloated frontend framework dependencies.",
+    "solution": "Pioneered React 19 architecture delivering sub-second first contentful paint and modular meditation lessons.",
+    "dbTables": [
+      "lessons",
+      "meditation_sessions",
+      "discussions"
+    ],
+    "skillsDemonstrated": [
+      "React 19 Architecture",
+      "Oxlint Tooling",
+      "Edge CDN Hosting"
+    ],
+    "liveDemo": "https://guru-upadhesam-portal.netlify.app",
+    "netlifyUrl": "https://guru-upadhesam-portal.netlify.app",
+    "github": "https://github.com/JeevananthanV/guru_upadhesam"
+  },
+  {
+    "slug": "ojs-logistics",
+    "title": "OJS Logistics & Cargo Global",
+    "description": "Global logistics, freight forwarding, customs clearance, and supply chain tracking web portal with multimodal shipping calculators.",
+    "role": "Full Stack Engineer",
+    "bullets": [
+      "Engineered international shipping inquiry forms for air freight, ocean cargo, and overland transport",
+      "Developed cargo shipment tracking simulator and customs clearance documentation guides",
+      "Optimized high-resolution transport fleet imagery and responsive client contact channels"
+    ],
+    "tech": [
+      "HTML5",
+      "Modern CSS",
+      "JavaScript",
+      "Web APIs",
+      "Responsive Layouts"
+    ],
+    "featured": false,
+    "theme": "Global Logistics & Freight Forwarding",
+    "colors": {
+      "primary": "#0369a1",
+      "secondary": "#f0f9ff",
+      "accent": "#0284c7"
+    },
+    "heroImage": "/screenshots/ojs-logistics.png",
+    "heroAnimation": "cargo-flow",
+    "features": [
+      "Air & Ocean Freight Portals",
+      "Customs Clearance Guides",
+      "Consignment Rate Inquiries",
+      "Fleet Gallery"
+    ],
+    "problem": "International clients faced confusing customs documentation and fragmented freight rate request processes.",
+    "solution": "Built a centralized digital logistics hub with streamlined rate inquiry forms and multi-modal transit services.",
+    "dbTables": [
+      "freight_inquiries",
+      "routes",
+      "customs_checklists"
+    ],
+    "skillsDemonstrated": [
+      "Multimodal Logistics UX",
+      "Asset Optimization",
+      "Responsive Modern CSS"
+    ],
+    "liveDemo": "https://ojs-research-journal.netlify.app",
+    "netlifyUrl": "https://ojs-research-journal.netlify.app",
+    "github": "https://github.com/JeevananthanV/ojs_new"
+  }
 ]

@@ -16,3 +16,5 @@ portfolio.zip
 .idea
 
 .agent/
+
+tsconfig.tsbuildinfo

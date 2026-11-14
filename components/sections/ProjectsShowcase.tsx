@@ -39,13 +39,37 @@ export default function ProjectsShowcase() {
   const filteredProjects = sortedProjects.filter((p) => {
     if (activeCategory === "all") return true
     if (activeCategory === "flagship") {
-      return p.slug === "kottai-varahi" || p.slug === "nandhini-tex"
+      return p.featured || p.slug === "kottai-varahi" || p.slug === "nandhini-tex" || p.slug === "enterprise-lms" || p.slug === "salem-marathon"
     }
     if (activeCategory === "fullstack") {
-      return p.slug === "wefluence" || p.slug === "anbu-travels" || p.slug === "arise20-foundation" || p.slug === "salem-marathon"
+      return (
+        p.tech.includes("FastAPI") || 
+        p.tech.includes("Node.js") || 
+        p.tech.includes("Express.js") || 
+        p.tech.includes("Express") || 
+        p.tech.includes("MongoDB") || 
+        p.tech.includes("PostgreSQL") || 
+        p.tech.includes("MySQL") ||
+        (p.dbTables && p.dbTables.length > 3)
+      )
     }
     if (activeCategory === "corporate") {
-      return p.slug === "ethiroli" || p.slug === "jayalakshmi-groups" || p.slug === "aruvi-tours"
+      return (
+        p.theme.includes("Corporate") ||
+        p.theme.includes("Logistics") ||
+        p.theme.includes("Spiritual") ||
+        p.theme.includes("Community") ||
+        p.theme.includes("Tourism") ||
+        p.theme.includes("Salon") ||
+        p.slug.includes("tour") ||
+        p.slug.includes("blog") ||
+        p.slug.includes("guru") ||
+        p.slug.includes("sukra") ||
+        p.slug.includes("world") ||
+        p.slug.includes("ojs") ||
+        p.slug.includes("ethiroli") ||
+        p.slug.includes("jayalakshmi")
+      )
     }
     return true
   })
