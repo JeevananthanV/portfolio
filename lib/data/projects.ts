@@ -53,7 +53,7 @@ export const projects: Project[] = [
     outcome: "Successfully launched a heritage saree boutique matching strict transactional price validation and robust operations pipelines",
     theme: "Premium Saree E-Commerce Store",
     colors: { primary: "#071A33", secondary: "#FAF8F3", accent: "#C9A227" },
-    heroImage: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/nandhini-tex.png",
     heroAnimation: "product-showcase",
     features: [
       "Dedicated Saree Storefront",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     outcome: "Reduced booking turnaround time by 60%",
     theme: "Social Media",
     colors: { primary: "#7c3aed", secondary: "#ec4899", accent: "#3b82f6" },
-    heroImage: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/wefluence.png",
     heroAnimation: "floating-cards",
     features: [
       "Brand Accounts",
@@ -190,7 +190,7 @@ export const projects: Project[] = [
     featured: false,
     theme: "Full-Stack Temple Portal",
     colors: { primary: "#4a0404", secondary: "#d4af37", accent: "#f5f5dc" },
-    heroImage: "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/kottai-varahi.png",
     heroAnimation: "sunrise",
     features: [
       "Public Portal (Home, About, Services, WhoIsVarahi, Vidyalayam)",
@@ -275,7 +275,7 @@ export const projects: Project[] = [
     featured: false,
     theme: "Creative Agency",
     colors: { primary: "#0e0e0e", secondary: "#00f0ff", accent: "#ff00ff" },
-    heroImage: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/ethiroli.png",
     heroAnimation: "text-reveal",
     features: [
       "Home",
@@ -346,7 +346,7 @@ export const projects: Project[] = [
     featured: false,
     theme: "Corporate",
     colors: { primary: "#1e3a5f", secondary: "#c0c0c0", accent: "#ffffff" },
-    heroImage: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/jayalakshmi-groups.png",
     heroAnimation: "glassmorphism",
     features: [
       "Home",
@@ -416,7 +416,7 @@ export const projects: Project[] = [
     featured: false,
     theme: "Travel",
     colors: { primary: "#1e40af", secondary: "#87ceeb", accent: "#ffffff" },
-    heroImage: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/anbu-travels.png",
     heroAnimation: "airplane",
     features: [
       "Browse Packages",
@@ -484,7 +484,7 @@ export const projects: Project[] = [
     featured: false,
     theme: "Nature",
     colors: { primary: "#166534", secondary: "#1e40af", accent: "#ffffff" },
-    heroImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/aruvi-tours.png",
     heroAnimation: "waterfall",
     features: [
       "Search Tour Packages",
@@ -554,7 +554,7 @@ export const projects: Project[] = [
     featured: false,
     theme: "Community & NGO Platform",
     colors: { primary: "#0f172a", secondary: "#2563eb", accent: "#f59e0b" },
-    heroImage: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/arise20-foundation.png",
     heroAnimation: "pulse",
     features: [
       "Winter Blanket & Food Drive Tracker",
@@ -624,7 +624,7 @@ export const projects: Project[] = [
     featured: false,
     theme: "Sports & Event Management",
     colors: { primary: "#1e3a8a", secondary: "#dc2626", accent: "#38bdf8" },
-    heroImage: "https://images.unsplash.com/photo-1452626038306-9aae5e071dd3?q=80&w=1200&auto=format&fit=crop",
+    heroImage: "/screenshots/salem-marathon.png",
     heroAnimation: "runway",
     features: [
       "Runner Registration (5K, 10K, Half Marathon)",
