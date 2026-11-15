@@ -173,7 +173,7 @@ export const projects: Project[] = [
       { value: "90", suffix: "%", label: "Match Accuracy" },
     ],
     liveDemo: "https://wefluence.vercel.app",
-    github: "https://github.com/JeevananthanV/portfolio",
+    github: "https://github.com/JeevananthanV/wefluence",
   },
   {
     slug: "kottai-varahi",
