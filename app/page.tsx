@@ -8,6 +8,7 @@ import ProjectsShowcase from "@/components/sections/ProjectsShowcase"
 import SkillsChips from "@/components/sections/SkillsChips"
 import MarqueeSkills from "@/components/sections/MarqueeSkills"
 import EducationCerts from "@/components/sections/EducationCerts"
+import { Awards1 } from "@/components/awards1"
 import ContactForm from "@/components/sections/ContactForm"
 import Footer from "@/components/sections/Footer"
 import FloatingDock from "@/components/ui/FloatingDock"
@@ -37,6 +38,7 @@ export default function Home() {
         <SkillsChips />
         <MarqueeSkills />
         <EducationCerts />
+        <Awards1 />
         <ContactForm />
         <Footer />
       </main>
