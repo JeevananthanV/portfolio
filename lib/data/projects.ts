@@ -766,7 +766,7 @@ export const projects: Project[] = [
       { value: "50", suffix: "+", label: "Events Managed" },
     ],
     liveDemo: "https://arise20foundation.org",
-    github: "https://github.com/JeevananthanV/portfolio",
+    github: "https://github.com/JeevananthanV/arise-20-foundation",
   },
   {
     slug: "salem-marathon",
