@@ -79,9 +79,9 @@ export const projects: Project[] = [
       "PDF Invoicing generation pipeline",
     ],
     gallery: [
-      { id: 1, title: "Saree Storefront Homepage", aspect: "16/9", imageUrl: "https://images.unsplash.com/photo-1555464032-c6837e7048b7?q=80&w=800&auto=format&fit=crop", description: "Elegant navy-and-gold storefront featuring sitemap-driven saree collections." },
+      { id: 1, title: "Saree Storefront Homepage", aspect: "16/9", imageUrl: "/screenshots/nandhini-tex.png", description: "Authentic navy-and-gold handloom boutique storefront featuring curated Kanchipuram and soft silk saree collections." },
       { id: 2, title: "Color Variant Selection", aspect: "4/3", imageUrl: "https://images.unsplash.com/photo-1583394293214-28145c48f66f?q=80&w=800&auto=format&fit=crop", description: "Product detail views that switch media display dynamically based on the color variant selected." },
-      { id: 3, title: "Admin Business Console", aspect: "3/4", imageUrl: "https://images.unsplash.com/photo-1554224455-15b17699b4b9?q=80&w=800&auto=format&fit=crop", description: "Operator dashboard summarizing low stock warnings, sales trends, and notification template variables." },
+      { id: 3, title: "Admin Operations Console", aspect: "3/4", imageUrl: "/screenshots/nandhini-tex-admin.png", description: "Comprehensive management console for catalog inventory, orders, customer segments, and price auditing." },
       { id: 4, title: "Checkout Flow", aspect: "1/1", imageUrl: "https://images.unsplash.com/photo-1492144534555-27e227f26075?q=80&w=800&auto=format&fit=crop", description: "One-page checkout supporting Razorpay online gateways or Cash on Delivery." },
       { id: 5, title: "Order Tracking", aspect: "16/9", imageUrl: "https://images.unsplash.com/photo-1561398290-b7c658e44b6c?q=80&w=800&auto=format&fit=crop", description: "Real-time delivery progress updates showing expectations and courier tracking codes." },
       { id: 6, title: "Stock Transaction ledger", aspect: "4/3", imageUrl: "https://images.unsplash.com/photo-1522199686750-3a1d8ab37330?q=80&w=800&auto=format&fit=crop", description: "Detailed audit ledger capturing every single stock entry, adjustment, and sale." },
