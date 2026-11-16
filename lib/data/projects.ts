@@ -497,7 +497,7 @@ export const projects: Project[] = [
     bullets: [
       "Customized and deployed an enterprise corporate platform based on the award-winning Presento Bootstrap 5 design framework",
       "Engineered 7 specialized practice divisions: Digital Marketing, Cloud Applications, UI/UX, EPUB3, PDF Remediation, 24/7 BPO Voice, and XML/JATS pipelines",
-      "Integrated interactive PureCounter metrics, touch-ready Swiper carousels, Isotope filterable case studies, and asynchronous RFP quote submission",
+      "Integrated interactive PureCounter metrics, touch-ready Swiper partner carousels, responsive practice catalogs, and asynchronous RFP quote submission",
       "Achieved 100% WCAG 2.1 AA and Section 508 accessibility compliance with semantic DOM structures and assistive tech validation",
     ],
     tech: ["Bootstrap 5.3", "Node.js", "JavaScript ES6+", "HTML5 Semantic", "PureCounter", "Swiper", "WCAG 2.1 AA", "REST APIs"],
@@ -512,7 +512,7 @@ export const projects: Project[] = [
       "Interactive RFP & Multi-Service Scope Quote Submission",
       "Careers Hub with 5 Openings & Direct Application Pipeline",
       "Global Contact Directory (Salem Headquarters, Chennai, Bangalore)",
-      "Technical Whitepapers & In-Depth Case Study Showcases",
+      "Technical Whitepapers & Corporate Practice Specifications",
     ],
     problem:
       "Jayalakshmi Group required a modern enterprise digital platform to showcase its multi-domain technology divisions, automate enterprise RFP estimates, manage high-volume inbound consultations, and oversee recruitment talent pools via a unified corporate portal.",
