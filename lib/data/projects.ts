@@ -503,7 +503,7 @@ export const projects: Project[] = [
     tech: ["Bootstrap 5.3", "Node.js", "JavaScript ES6+", "HTML5 Semantic", "PureCounter", "Swiper", "WCAG 2.1 AA", "REST APIs"],
     featured: true,
     theme: "Enterprise Technology Conglomerate",
-    colors: { primary: "#111111", secondary: "#e03a3c", accent: "#ffffff" },
+    colors: { primary: "#0b0f19", secondary: "#2563eb", accent: "#06b6d4" },
     heroImage: "/screenshots/jayalakshmi-groups.png",
     heroAnimation: "glassmorphism",
     features: [
