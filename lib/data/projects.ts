@@ -143,8 +143,8 @@ export const projects: Project[] = [
       "Responsive UI",
     ],
     gallery: [
-      { id: 1, title: "Influencer Discovery Feed", aspect: "16/9", imageUrl: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop", description: "Search interface with niche category filters and engagement scoring." },
-      { id: 2, title: "Creator Portfolio Screen", aspect: "4/3", imageUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop", description: "Media kit preview featuring follower statistics and past campaigns." },
+      { id: 1, title: "Influencer Discovery Marketplace", aspect: "16/9", imageUrl: "/screenshots/wefluence.png", description: "Search interface with niche category filters, creator cards, and booking requests." },
+      { id: 2, title: "Admin Command Center", aspect: "16/9", imageUrl: "/screenshots/wefluence-admin.png", description: "Master management console for influencer campaigns, verification approvals, and user accounts." },
       { id: 3, title: "Brand Campaign Workspace", aspect: "3/4", imageUrl: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop", description: "Kanban board for tracking active influencer deliverables." },
       { id: 4, title: "Real-Time Chat", aspect: "1/1", imageUrl: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop", description: "Direct messaging portal with contract attachment support." },
       { id: 5, title: "Performance Dashboard", aspect: "16/9", imageUrl: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop", description: "ROI analytics and click-through rate graphs for brand managers." },
