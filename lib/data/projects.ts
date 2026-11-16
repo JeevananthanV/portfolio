@@ -712,7 +712,7 @@ export const projects: Project[] = [
     tech: ["React.js", "Node.js", "Express", "MySQL", "Tailwind CSS", "Razorpay", "Instagram API"],
     featured: false,
     theme: "Community & NGO Platform",
-    colors: { primary: "#0f172a", secondary: "#2563eb", accent: "#f59e0b" },
+    colors: { primary: "#0b2024", secondary: "#0f766e", accent: "#ff6b2b" },
     heroImage: "/screenshots/arise20-foundation.png",
     heroAnimation: "pulse",
     features: [
@@ -736,7 +736,7 @@ export const projects: Project[] = [
       "Community Analytics",
     ],
     gallery: [
-      { id: 1, title: "Salem Winter Blanket Drive", aspect: "16/9", imageUrl: "https://images.unsplash.com/photo-1593113598332-cd288d649433?q=80&w=800&auto=format&fit=crop", description: "Charity drive portal for organizing winter blanket distribution to the homeless in Salem." },
+      { id: 1, title: "Arise '20 Foundation Platform", aspect: "16/9", imageUrl: "/screenshots/arise20-foundation.png", description: "Together We Rise. Together We Serve community non-profit portal with volunteer drives and donation counters." },
       { id: 2, title: "Arise Events Youth Meetup", aspect: "4/3", imageUrl: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=800&auto=format&fit=crop", description: "Youth & professional networking event registration with live QR passes." },
       { id: 3, title: "Volunteer Recruitment Hub", aspect: "3/4", imageUrl: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=800&auto=format&fit=crop", description: "Volunteer sign-up workflow with task allocation and group chat feeds." },
       { id: 4, title: "Food Donation Campaign", aspect: "1/1", imageUrl: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop", description: "Community welfare food drive tracker for marginalized groups." },

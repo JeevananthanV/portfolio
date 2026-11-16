@@ -9,7 +9,7 @@ interface ProjectPreloaderProps {
 }
 
 export default function ProjectPreloader({ title, accentColor }: ProjectPreloaderProps) {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     // Snappy transition (250ms) to prevent perceived sluggishness
