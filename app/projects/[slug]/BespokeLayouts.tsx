@@ -315,7 +315,7 @@ export function WefluenceDetail({ project, prevProject, nextProject }: BespokePr
         <header className="border-b border-white/10 py-4 px-4 sm:px-8 flex items-center justify-between bg-neutral-950/80 backdrop-blur-xl sticky top-0 z-40">
           <Link 
             href="/#work" 
-            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#7c3aed] hover:text-white transition-colors"
+            className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-[#ffd700] hover:text-white transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Back to Projects
           </Link>
@@ -326,7 +326,7 @@ export function WefluenceDetail({ project, prevProject, nextProject }: BespokePr
           
           {/* Top Hero block */}
           <div className="space-y-4 max-w-3xl">
-            <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#7c3aed]/10 border border-[#7c3aed]/20 text-[#7c3aed] inline-block font-mono">
+            <span className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-[#ffd700]/10 border border-[#ffd700]/20 text-[#ffd700] inline-block font-mono">
               {project.theme}
             </span>
             <h1 className="text-3xl sm:text-5xl font-extrabold text-white font-syne tracking-tight">
@@ -342,12 +342,27 @@ export function WefluenceDetail({ project, prevProject, nextProject }: BespokePr
                   href={project.liveDemo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#7c3aed] text-white font-bold text-xs uppercase tracking-wider font-syne rounded-xl hover:bg-[#6d28d9] transition-all"
+                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#ffd700] text-black font-bold text-xs uppercase tracking-wider font-syne rounded-xl hover:bg-[#e6c200] transition-all"
                 >
                   <span>Live App</span>
                   <ExternalLink size={14} />
                 </a>
               )}
+            </div>
+          </div>
+
+          {/* Hero Showcase Image */}
+          <div className="relative aspect-[16/10] w-full rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-neutral-950">
+            <img 
+              src={project.heroImage} 
+              alt={project.title}
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
+            <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 flex items-center gap-3">
+              <span className="px-3.5 py-1.5 rounded-full bg-black/80 backdrop-blur-md border border-white/15 text-[#ffd700] text-xs font-mono font-bold uppercase tracking-wider flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#ffd700] animate-pulse" /> Live Apache Tomcat 9.0 Platform
+              </span>
             </div>
           </div>
 
